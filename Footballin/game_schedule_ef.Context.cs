@@ -13,10 +13,10 @@ namespace Footballin
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ffstatsEntities : DbContext
+    public partial class ffstatsEntities1 : DbContext
     {
-        public ffstatsEntities()
-            : base("name=ffstatsEntities")
+        public ffstatsEntities1()
+            : base("name=ffstatsEntities1")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Footballin
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<game> games { get; set; }
+        public virtual DbSet<game_schedule> game_schedule { get; set; }
     }
 }

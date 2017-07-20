@@ -200,24 +200,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="game.cs">
-      <DependentUpon>gamez.tt</DependentUpon>
+    <Compile Include="game_schedule.services.cs" />
+    <Compile Include="game_schedule.cs">
+      <DependentUpon>game_schedule_ef.tt</DependentUpon>
     </Compile>
-    <Compile Include="games.services.cs" />
-    <Compile Include="gamez.Context.cs">
+    <Compile Include="game_schedule_ef.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>gamez.Context.tt</DependentUpon>
+      <DependentUpon>game_schedule_ef.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="gamez.cs">
+    <Compile Include="game_schedule_ef.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>gamez.tt</DependentUpon>
+      <DependentUpon>game_schedule_ef.tt</DependentUpon>
     </Compile>
-    <Compile Include="gamez.Designer.cs">
+    <Compile Include="game_schedule_ef.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>gamez.edmx</DependentUpon>
+      <DependentUpon>game_schedule_ef.edmx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,9 +225,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\GameReference.cs" />
-    <Compile Include="Models\WeekInfoModel.cs" />
-    <Compile Include="nfl.com.data.service.cs" />
+    <Compile Include="NflDataRetriver.service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -236,15 +234,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="gamez.Context.tt">
+    <Content Include="game_schedule_ef.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>gamez.edmx</DependentUpon>
-      <LastGenOutput>gamez.Context.cs</LastGenOutput>
+      <DependentUpon>game_schedule_ef.edmx</DependentUpon>
+      <LastGenOutput>game_schedule_ef.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="gamez.tt">
+    <Content Include="game_schedule_ef.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>gamez.edmx</DependentUpon>
-      <LastGenOutput>gamez.cs</LastGenOutput>
+      <DependentUpon>game_schedule_ef.edmx</DependentUpon>
+      <LastGenOutput>game_schedule_ef.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -253,12 +251,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="gamez.edmx">
+    <EntityDeploy Include="game_schedule_ef.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>gamez.Designer.cs</LastGenOutput>
+      <LastGenOutput>game_schedule_ef.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="gamez.edmx.diagram">
-      <DependentUpon>gamez.edmx</DependentUpon>
+    <Content Include="game_schedule_ef.edmx.diagram">
+      <DependentUpon>game_schedule_ef.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -1,4 +1,4 @@
-﻿@Model List<game>
+﻿@*@Model List<game_schedule>*@
 @{
     ViewBag.Title = "Home Page";
 }
@@ -10,12 +10,10 @@
     Sup homie
 </div>*@
  
-@foreach(games g in @Model)
-{
-    <div class="row">
-        hi
-    </div>
-}
+<div class="content">
+    This is my content
+    @Html.ActionLink("Sync", "SyncScheduleDataFromUrl");
+</div>
 @*<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>

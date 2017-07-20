@@ -12,7 +12,7 @@ namespace Footballin
     using System;
     using System.Collections.Generic;
     
-    public partial class game
+    public partial class game_schedule
     {
         public int eid { get; set; }
         public string gsis { get; set; }
@@ -30,5 +30,8 @@ namespace Footballin
         public string rz { get; set; }
         public string ga { get; set; }
         public string gametype { get; set; }
+        public Nullable<decimal> season { get; set; }
+        public string seasontype { get; set; }
+        public Nullable<decimal> week { get; set; }
     }
 }
