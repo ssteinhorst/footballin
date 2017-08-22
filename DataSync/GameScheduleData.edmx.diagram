@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="008c8f97b6c1475d8b25ee5d50cccbae" Name="Diagram1">
-        <EntityTypeShape EntityType="ffstatsModel1.game_schedule" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="4c046ca593244a1790d5f9c135423d3b" Name="Diagram1">
+        <EntityTypeShape EntityType="ffstatsModel.game_schedule" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Footballin
+namespace DataSync
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ffstatsEntities1 : DbContext
+    public partial class Entities : DbContext
     {
-        public ffstatsEntities1()
-            : base("name=ffstatsEntities1")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Footballin
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<game_schedule> game_schedule { get; set; }
+        public virtual DbSet<Root> Roots { get; set; }
     }
 }

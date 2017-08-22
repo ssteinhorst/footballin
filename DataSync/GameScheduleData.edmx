@@ -4,10 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ffstatsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ffstatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="game_schedule">
           <Key>
-            <PropertyRef Name="gsis" />
+            <PropertyRef Name="eid" />
           </Key>
           <Property Name="eid" Type="int" Nullable="false" />
           <Property Name="gsis" Type="nchar" MaxLength="10" Nullable="false" />
@@ -29,17 +29,17 @@
           <Property Name="seasontype" Type="nchar" MaxLength="10" />
           <Property Name="week" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <EntityContainer Name="ffstatsModel1StoreContainer">
+        <EntityContainer Name="ffstatsModelStoreContainer">
           <EntitySet Name="game_schedule" EntityType="Self.game_schedule" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ffstatsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ffstatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="game_schedule">
           <Key>
-            <PropertyRef Name="gsis" />
+            <PropertyRef Name="eid" />
           </Key>
           <Property Name="eid" Type="Int32" Nullable="false" />
           <Property Name="gsis" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
@@ -61,7 +61,7 @@
           <Property Name="seasontype" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="week" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityContainer Name="ffstatsEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ffstatsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="game_schedule" EntityType="Self.game_schedule" />
         </EntityContainer>
       </Schema>
@@ -69,9 +69,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ffstatsModel1StoreContainer" CdmEntityContainer="ffstatsEntities1">
+        <EntityContainerMapping StorageEntityContainer="ffstatsModelStoreContainer" CdmEntityContainer="ffstatsEntities">
           <EntitySetMapping Name="game_schedule">
-            <EntityTypeMapping TypeName="ffstatsModel1.game_schedule">
+            <EntityTypeMapping TypeName="ffstatsModel.game_schedule">
               <MappingFragment StoreEntitySet="game_schedule">
                 <ScalarProperty Name="eid" ColumnName="eid" />
                 <ScalarProperty Name="gsis" ColumnName="gsis" />

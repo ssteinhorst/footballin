@@ -1,8 +1,13 @@
-﻿using System;
+﻿using DataSync;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace Footballin.Controllers
 {
@@ -15,8 +20,27 @@ namespace Footballin.Controllers
             //games.Add(model);
             //var dataService = new NflDataRetriver();
             //var xmlDoc = dataService.GetSheduleDataFromURL(2015, "REG", 1);
+            //string path = @"C:\Users\Scott\Desktop\formatted gamedata.json";
 
             return View();
+        }
+        public void SaveGameData()
+        {
+
+            //JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\justroot.json");
+            JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\formatted_gamedata.json");
+
+            var jsonEdited = (JObject)rootobj["2013090500"]["drives"];
+            jsonEdited.Property("crntdrv").Remove();
+
+            Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
+            justroot.eid = "2013090500";
+
+            using (var db = new Entities())
+            {
+                db.Roots.Add(justroot);
+                db.SaveChanges();
+            }
         }
 
         public void SyncScheduleDataFromUrl()
@@ -27,9 +51,9 @@ namespace Footballin.Controllers
             //string[] seasonTypes = {"PRE", "REG", "POST"};
             string seasonType = "";
             var weeks = Enumerable.Range(1, 22).ToArray();
-            foreach(int year in years)
+            foreach (int year in years)
             {
-                foreach(int week in weeks)
+                foreach (int week in weeks)
                 {
                     if (week != 21)
                     {
@@ -41,11 +65,11 @@ namespace Footballin.Controllers
                         {
                             seasonType = "POST";
                         }
-                        NflDataRetriver.AddSheduleDataFromURL(year, seasonType, week);
+                        DataSync.NflDataRetriver.AddSheduleDataFromURL(year, seasonType, week);
                     }
                 }
             }
-            //dataService.AddSheduleDataFromURL(2015, "REG", 1);
+            
 
         }
         public ActionResult About()

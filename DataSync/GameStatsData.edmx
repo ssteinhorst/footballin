@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ffstatsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Root">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="weather" Type="nchar" MaxLength="10" />
+          <Property Name="media" Type="nchar" MaxLength="10" />
+          <Property Name="yl" Type="nchar" MaxLength="10" />
+          <Property Name="qtr" Type="nchar" MaxLength="10" />
+          <Property Name="note" Type="nchar" MaxLength="10" />
+          <Property Name="down" Type="nchar" MaxLength="10" />
+          <Property Name="togo" Type="nchar" MaxLength="10" />
+          <Property Name="redzone" Type="nchar" MaxLength="10" />
+          <Property Name="clock" Type="nchar" MaxLength="10" />
+          <Property Name="posteam" Type="nchar" MaxLength="10" />
+          <Property Name="stadium" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="ffstatsModel1StoreContainer">
+          <EntitySet Name="Root" EntityType="Self.Root" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ffstatsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roots" EntityType="ffstatsModel1.Root" />
+        </EntityContainer>
+        <EntityType Name="Root">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="weather" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="media" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="qtr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="down" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="togo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="redzone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="clock" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="stadium" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ffstatsModel1StoreContainer" CdmEntityContainer="Entities">
+        <EntitySetMapping Name="Roots">
+            <EntityTypeMapping TypeName="ffstatsModel1.Root">
+              <MappingFragment StoreEntitySet="Root">
+                <ScalarProperty Name="stadium" ColumnName="stadium" />
+                <ScalarProperty Name="posteam" ColumnName="posteam" />
+                <ScalarProperty Name="clock" ColumnName="clock" />
+                <ScalarProperty Name="redzone" ColumnName="redzone" />
+                <ScalarProperty Name="togo" ColumnName="togo" />
+                <ScalarProperty Name="down" ColumnName="down" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="qtr" ColumnName="qtr" />
+                <ScalarProperty Name="yl" ColumnName="yl" />
+                <ScalarProperty Name="media" ColumnName="media" />
+                <ScalarProperty Name="weather" ColumnName="weather" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

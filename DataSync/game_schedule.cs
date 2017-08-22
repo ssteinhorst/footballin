@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Footballin
+namespace DataSync
 {
     using System;
     using System.Collections.Generic;
