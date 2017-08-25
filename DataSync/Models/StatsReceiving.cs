@@ -18,8 +18,8 @@ namespace DataSync
         public string twoptm { get; set; }
 
     }
-    public class Receiving
-    {
-        public Dictionary<string, StatsReceiving> receiving { get; set; }
-    }
+    //public class Receiving
+    //{
+    //    public Dictionary<string, StatsReceiving> receiving { get; set; }
+    //}
 }

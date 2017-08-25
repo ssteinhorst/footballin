@@ -16,8 +16,8 @@ namespace DataSync
         public string lost { get; set; }
 
     }
-    public class Fumbles
-    {
-        public Dictionary<string, StatsFumbles> fumbles { get; set; }
-    }
+    //public class Fumbles
+    //{
+    //    public Dictionary<string, StatsFumbles> fumbles { get; set; }
+    //}
 }

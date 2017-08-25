@@ -19,8 +19,8 @@ namespace DataSync
         public string xpb { get; set; }
         public string xptot { get; set; }
     }
-    public class Kicking
-    {
-        public Dictionary<string, StatsKicking> kicking { get; set; }
-    }
+    //public class Kicking
+    //{
+    //    public Dictionary<string, StatsKicking> kicking { get; set; }
+    //}
 }

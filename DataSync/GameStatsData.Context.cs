@@ -26,13 +26,9 @@ namespace DataSync
         }
     
         public virtual DbSet<Root> Roots { get; set; }
-        public virtual DbSet<drive_play_player> drive_play_player { get; set; }
-        public virtual DbSet<play> plays { get; set; }
-        public virtual DbSet<scrsummary> scrsummaries { get; set; }
-        public virtual DbSet<stats_defense> stats_defense { get; set; }
-        public virtual DbSet<stats_team> stats_team { get; set; }
         public virtual DbSet<drive> drives { get; set; }
         public virtual DbSet<away_team> away_team { get; set; }
         public virtual DbSet<home_team> home_team { get; set; }
+        public virtual DbSet<passing_stats> passing_stats { get; set; }
     }
 }

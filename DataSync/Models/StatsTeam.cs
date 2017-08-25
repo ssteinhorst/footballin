@@ -21,8 +21,8 @@ namespace DataSync
         public string top { get; set; }
 
     }
-    public class Team
-    {
-        public StatsTeam team { get; set; }
-    }
+    //public class Team
+    //{
+    //    public StatsTeam team { get; set; }
+    //}
 }

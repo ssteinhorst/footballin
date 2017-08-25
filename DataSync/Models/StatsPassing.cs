@@ -18,8 +18,8 @@ namespace DataSync
         public string twoptm { get; set; }
 
     }
-    public class Passing
-    {
-        public Dictionary<string, StatsPassing> passing { get; set; }
-    }
+    //public class Passing
+    //{
+    //    public Dictionary<string, StatsPassing> passing { get; set; }
+    //}
 }

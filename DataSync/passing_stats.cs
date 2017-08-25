@@ -12,14 +12,17 @@ namespace DataSync
     using System;
     using System.Collections.Generic;
     
-    public partial class scrsummary
+    public partial class passing_stats
     {
-        public string eid { get; set; }
-        public string scr_id { get; set; }
-        public string type { get; set; }
-        public string desc { get; set; }
-        public Nullable<int> qtr { get; set; }
-        public string team { get; set; }
-        public string players { get; set; }
+        public string eid_playerid { get; set; }
+        public string playerid { get; set; }
+        public string name { get; set; }
+        public string att { get; set; }
+        public string cmp { get; set; }
+        public string yds { get; set; }
+        public string tds { get; set; }
+        public string ints { get; set; }
+        public string twopta { get; set; }
+        public string twoptm { get; set; }
     }
 }

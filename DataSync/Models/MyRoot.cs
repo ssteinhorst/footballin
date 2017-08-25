@@ -68,7 +68,7 @@ namespace DataSync
         }
 
         // away and home for for JSON deserializing
-        // team_details is for EF persistance
+        // home_team and away_team are for EF persistance
         public Away away { get; set; }
         public Home home { get; set; }
 
@@ -112,41 +112,7 @@ namespace DataSync
                 return awy;
             }
         }
-        //[JsonIgnore]
-        //[JsonProperty(Required = Required.Default)]
-        //public List<team_details> team_details { get {
-        //        var teams = new List<team_details>();
-        //        var homeTeam = new team_details();
-        //        homeTeam.eid = this.eid;
-        //        homeTeam.home_or_away = "home";
-        //        homeTeam.abbr = this.away.abbr;
-        //        homeTeam.team_to = this.away.abbr;
-        //        homeTeam.players = this.away.players;
-        //        homeTeam.score_1 = this.away.score["1"];
-        //        homeTeam.score_2 = this.away.score["2"];
-        //        homeTeam.score_3 = this.away.score["3"];
-        //        homeTeam.score_4 = this.away.score["4"];
-        //        homeTeam.score_5 = this.away.score["5"];
-        //        homeTeam.score_t = this.away.score["T"];
-        //        teams.Add(homeTeam);
-
-        //        var awayTeam = new team_details();
-        //        awayTeam.eid = this.eid;
-        //        awayTeam.home_or_away = "away";
-        //        awayTeam.abbr = this.home.abbr;
-        //        awayTeam.team_to = this.home.abbr;
-        //        awayTeam.players = this.home.players;
-        //        awayTeam.score_1 = this.home.score["1"];
-        //        awayTeam.score_2 = this.home.score["2"];
-        //        awayTeam.score_3 = this.home.score["3"];
-        //        awayTeam.score_4 = this.home.score["4"];
-        //        awayTeam.score_5 = this.home.score["5"];
-        //        awayTeam.score_t = this.home.score["T"];
-        //        teams.Add(awayTeam);
-
-        //        return teams;
-        //    } }
-
+       
         [JsonIgnore]
         [JsonProperty(Required = Required.Default)]
         public List<ScrSummary> scrSummary { get ; set; }

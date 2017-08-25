@@ -16,8 +16,8 @@ namespace DataSync
         public string lngtd { get; set; }
 
     }
-    public class Kickret
-    {
-        public Dictionary<string, StatsKickret> kickret { get; set; }
-    }
+    //public class Kickret
+    //{
+    //    public Dictionary<string, StatsKickret> kickret { get; set; }
+    //}
 }

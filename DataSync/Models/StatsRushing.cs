@@ -19,8 +19,8 @@ namespace DataSync
         public string twoptm { get; set; }
 
     }
-    public class Rushing
-    {
-        public Dictionary<string, StatsRushing> rushing { get; set; }
-    }
+    //public class Rushing
+    //{
+    //    public Dictionary<string, StatsRushing> rushing { get; set; }
+    //}
 }

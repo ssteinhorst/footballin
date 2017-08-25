@@ -16,8 +16,8 @@ namespace DataSync
         public string lng { get; set; }
 
     }
-    public class Punting
-    {
-        public Dictionary<string, StatsPunting> punting { get; set; }
-    }
+    //public class Punting
+    //{
+    //    public Dictionary<string, StatsPunting> punting { get; set; }
+    //}
 }

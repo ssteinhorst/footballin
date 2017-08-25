@@ -16,8 +16,8 @@ namespace DataSync
         public string lngtd { get; set; }
 
     }
-    public class Puntret
-    {
-        public Dictionary<string, StatsPuntret> puntret { get; set; }
-    }
+    //public class Puntret
+    //{
+    //    public Dictionary<string, StatsPuntret> puntret { get; set; }
+    //}
 }

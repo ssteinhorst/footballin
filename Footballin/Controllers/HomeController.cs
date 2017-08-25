@@ -1,5 +1,5 @@
 ﻿using DataSync;
-
+using DataSync.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -41,8 +41,10 @@ namespace Footballin.Controllers
             var jsonEdited = (JObject)jsonObj["2013090500"]["drives"];
             jsonEdited.Property("crntdrv").Remove();
             Root root = JsonConvert.DeserializeObject<Root>(jsonObj["2013090500"].ToString());
-            root.eid = "2013090500";
+            string eid = "2013090500";
+            root.eid = eid;
 
+            var xformer = new JsonToEFModelTransformer();
             using (var db = new Entities())
             {
 
@@ -51,6 +53,10 @@ namespace Footballin.Controllers
                 //db.team_details.Select(e => e.eid != null);
                 db.home_team.Add(root.home_team);
                 db.away_team.Add(root.away_team);
+                foreach (passing_stats ps in xformer.TransformPassingToEF(eid, root.home.stats.passing))
+                {
+                    db.passing_stats.Add(ps);
+                }
                 db.SaveChanges();
 
 
@@ -69,6 +75,12 @@ namespace Footballin.Controllers
                 if (remove_away != null)
                 {
                     db.away_team.Remove(remove_away);
+                }
+
+                var remove_passing = db.passing_stats.SingleOrDefault(e => e.eid_playerid.StartsWith(eid));
+                if(remove_passing != null)
+                {
+                    db.passing_stats.Remove(remove_passing);
                 }
 
                 //db.home_team.Remove(root.home_team);
