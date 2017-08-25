@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +23,134 @@ namespace DataSync
         //public string clock { get; set; }
         //public string posteam { get; set; }
         //public string stadium { get; set; }
+        [NotMapped]
         public Dictionary<string, ScrSummary> scrsummary { get; set; }
+        [NotMapped]
+
+        // drives is for JSON, Drives is for EF
         public Dictionary<string, Drive> drives { get; set; }
+        [JsonIgnore]
+        [JsonProperty(Required = Required.Default)]
+        public List<drive> Drives
+        {
+            get
+            {
+                var driveList = new List<drive>();
+                foreach (string key in drives.Keys)
+                {
+                    drive drv = new drive();
+                    drv.eid = eid;
+                    drv.drivenumber = key.ToString();
+                    drv.posteam = drives[key].posteam;
+                    drv.qtr = drives[key].qtr;
+                    drv.redzone = drives[key].redzone;
+                    drv.fds = drives[key].fds;
+                    drv.result = drives[key].result;
+                    drv.penyds = drives[key].penyds;
+                    drv.ydsgained = drives[key].ydsgained;
+                    drv.numplays = drives[key].numplays;
+                    drv.postime = drives[key].postime;
+                    drv.posteam = drives[key].posteam;
+                    drv.posteam = drives[key].posteam;
+                    drv.start_qtr = drives[key].Start.qtr;
+                    drv.start_time = drives[key].Start.time;
+                    drv.start_yrdln = drives[key].Start.yrdln;
+                    drv.start_team = drives[key].Start.team;
+
+                    drv.end_qtr = drives[key].End.qtr;
+                    drv.end_time = drives[key].End.time;
+                    drv.end_yrdln = drives[key].End.yrdln;
+                    drv.end_team = drives[key].End.team;
+
+                }
+                return driveList;
+            }
+        }
+
+        // away and home for for JSON deserializing
+        // team_details is for EF persistance
         public Away away { get; set; }
         public Home home { get; set; }
+
+        [JsonIgnore]
+        [JsonProperty(Required = Required.Default)]
+        public home_team home_team { get
+            {
+                var hme = new home_team();
+                hme.eid = eid;
+                hme.abbr = home.abbr;
+                hme.players = home.players;
+                hme.team_to = home.to;
+                hme.score_1 = home.score["1"];
+                hme.score_2 = home.score["2"];
+                hme.score_3 = home.score["3"];
+                hme.score_4 = home.score["4"];
+                hme.score_5 = home.score["5"];
+                hme.score_t = home.score["T"];
+
+                return hme;
+            } }
+
+        [JsonIgnore]
+        [JsonProperty(Required = Required.Default)]
+        public away_team away_team
+        {
+            get
+            {
+                var awy = new away_team();
+                awy.eid = eid;
+                awy.abbr = away.abbr;
+                awy.players = away.players;
+                awy.team_to = away.to;
+                awy.score_1 = away.score["1"];
+                awy.score_2 = away.score["2"];
+                awy.score_3 = away.score["3"];
+                awy.score_4 = away.score["4"];
+                awy.score_5 = away.score["5"];
+                awy.score_t = away.score["T"];
+
+                return awy;
+            }
+        }
+        //[JsonIgnore]
+        //[JsonProperty(Required = Required.Default)]
+        //public List<team_details> team_details { get {
+        //        var teams = new List<team_details>();
+        //        var homeTeam = new team_details();
+        //        homeTeam.eid = this.eid;
+        //        homeTeam.home_or_away = "home";
+        //        homeTeam.abbr = this.away.abbr;
+        //        homeTeam.team_to = this.away.abbr;
+        //        homeTeam.players = this.away.players;
+        //        homeTeam.score_1 = this.away.score["1"];
+        //        homeTeam.score_2 = this.away.score["2"];
+        //        homeTeam.score_3 = this.away.score["3"];
+        //        homeTeam.score_4 = this.away.score["4"];
+        //        homeTeam.score_5 = this.away.score["5"];
+        //        homeTeam.score_t = this.away.score["T"];
+        //        teams.Add(homeTeam);
+
+        //        var awayTeam = new team_details();
+        //        awayTeam.eid = this.eid;
+        //        awayTeam.home_or_away = "away";
+        //        awayTeam.abbr = this.home.abbr;
+        //        awayTeam.team_to = this.home.abbr;
+        //        awayTeam.players = this.home.players;
+        //        awayTeam.score_1 = this.home.score["1"];
+        //        awayTeam.score_2 = this.home.score["2"];
+        //        awayTeam.score_3 = this.home.score["3"];
+        //        awayTeam.score_4 = this.home.score["4"];
+        //        awayTeam.score_5 = this.home.score["5"];
+        //        awayTeam.score_t = this.home.score["T"];
+        //        teams.Add(awayTeam);
+
+        //        return teams;
+        //    } }
+
+        [JsonIgnore]
+        [JsonProperty(Required = Required.Default)]
+        public List<ScrSummary> scrSummary { get ; set; }
+
+
     }
 }

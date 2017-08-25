@@ -26,19 +26,54 @@ namespace Footballin.Controllers
         }
         public void SaveGameData()
         {
-
+            string jsonPath = @"C:\Users\Scott\Desktop\formatted_gamedata.json";
             //JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\justroot.json");
-            JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\formatted_gamedata.json");
+            //JObject rootobj = JsonUtils.getJObject(jsonPath);
 
-            var jsonEdited = (JObject)rootobj["2013090500"]["drives"];
+            //var jsonEdited = (JObject)rootobj["2013090500"]["drives"];
+            //jsonEdited.Property("crntdrv").Remove();
+
+            //Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
+            //justroot.eid = "2013090500";
+
+            JObject jsonObj = JsonUtils.getJObject(jsonPath);
+            // the 2 lines below remove the 'crntdrv' node
+            var jsonEdited = (JObject)jsonObj["2013090500"]["drives"];
             jsonEdited.Property("crntdrv").Remove();
-
-            Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
-            justroot.eid = "2013090500";
+            Root root = JsonConvert.DeserializeObject<Root>(jsonObj["2013090500"].ToString());
+            root.eid = "2013090500";
 
             using (var db = new Entities())
             {
-                db.Roots.Add(justroot);
+
+                // add new entries
+                db.Roots.Add(root);
+                //db.team_details.Select(e => e.eid != null);
+                db.home_team.Add(root.home_team);
+                db.away_team.Add(root.away_team);
+                db.SaveChanges();
+
+
+                // remove changes
+                var root_remove = db.Roots.SingleOrDefault(e => e.eid == root.eid);
+                if(root_remove != null)
+                {
+                    db.Roots.Remove(root_remove);
+                }
+                var remove_home = db.home_team.SingleOrDefault(e => e.eid == root.eid);
+                if (remove_home != null)
+                {
+                    db.home_team.Remove(remove_home);
+                }
+                var remove_away = db.away_team.SingleOrDefault(e => e.eid == root.eid);
+                if (remove_away != null)
+                {
+                    db.away_team.Remove(remove_away);
+                }
+
+                //db.home_team.Remove(root.home_team);
+                //db.away_team.Remove(root.away_team);
+
                 db.SaveChanges();
             }
         }

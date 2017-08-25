@@ -5,6 +5,92 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ffstatsModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="away_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="abbr" Type="nchar" MaxLength="10" />
+          <Property Name="team_to" Type="nchar" MaxLength="10" />
+          <Property Name="players" Type="nchar" MaxLength="10" />
+          <Property Name="score_1" Type="nchar" MaxLength="10" />
+          <Property Name="score_2" Type="nchar" MaxLength="10" />
+          <Property Name="score_3" Type="nchar" MaxLength="10" />
+          <Property Name="score_4" Type="nchar" MaxLength="10" />
+          <Property Name="score_5" Type="nchar" MaxLength="10" />
+          <Property Name="score_t" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="drive">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="drivenumber" Type="nchar" MaxLength="10" />
+          <Property Name="posteam" Type="nchar" MaxLength="10" />
+          <Property Name="qtr" Type="int" />
+          <Property Name="redzone" Type="nchar" MaxLength="10" />
+          <Property Name="fds" Type="int" />
+          <Property Name="result" Type="nchar" MaxLength="10" />
+          <Property Name="penyds" Type="int" />
+          <Property Name="ydsgained" Type="int" />
+          <Property Name="numplays" Type="int" />
+          <Property Name="postime" Type="nchar" MaxLength="10" />
+          <Property Name="start_qtr" Type="nchar" MaxLength="10" />
+          <Property Name="start_time" Type="nchar" MaxLength="10" />
+          <Property Name="start_yrdln" Type="nchar" MaxLength="10" />
+          <Property Name="start_team" Type="nchar" MaxLength="10" />
+          <Property Name="end_qtr" Type="nchar" MaxLength="10" />
+          <Property Name="end_time" Type="nchar" MaxLength="10" />
+          <Property Name="end_yrdln" Type="nchar" MaxLength="10" />
+          <Property Name="end_team" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="drive_play_player">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="drivenum" Type="int" />
+          <Property Name="playnum" Type="int" />
+          <Property Name="playerid" Type="nchar" MaxLength="15" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="clubcode" Type="nchar" MaxLength="10" />
+          <Property Name="playerName" Type="nchar" MaxLength="20" />
+          <Property Name="statId" Type="int" />
+          <Property Name="yards" Type="int" />
+        </EntityType>
+        <EntityType Name="home_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="abbr" Type="nchar" MaxLength="10" />
+          <Property Name="team_to" Type="nchar" MaxLength="10" />
+          <Property Name="players" Type="nchar" MaxLength="10" />
+          <Property Name="score_1" Type="nchar" MaxLength="10" />
+          <Property Name="score_2" Type="nchar" MaxLength="10" />
+          <Property Name="score_3" Type="nchar" MaxLength="10" />
+          <Property Name="score_4" Type="nchar" MaxLength="10" />
+          <Property Name="score_5" Type="nchar" MaxLength="10" />
+          <Property Name="score_t" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="play">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="drive_num" Type="int" />
+          <Property Name="playnum" Type="int" />
+          <Property Name="sp" Type="int" />
+          <Property Name="qtr" Type="int" />
+          <Property Name="down" Type="int" />
+          <Property Name="time" Type="nchar" MaxLength="10" />
+          <Property Name="yrdln" Type="nchar" MaxLength="10" />
+          <Property Name="ydstogo" Type="int" />
+          <Property Name="ydsnet" Type="int" />
+          <Property Name="posteam" Type="nchar" MaxLength="10" />
+          <Property Name="desc" Type="nchar" MaxLength="500" />
+          <Property Name="note" Type="nchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Root">
           <Key>
             <PropertyRef Name="eid" />
@@ -22,8 +108,59 @@
           <Property Name="posteam" Type="nchar" MaxLength="10" />
           <Property Name="stadium" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="scrsummary">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="scr_id" Type="nchar" MaxLength="10" />
+          <Property Name="type" Type="nchar" MaxLength="10" />
+          <Property Name="desc" Type="nchar" MaxLength="500" />
+          <Property Name="qtr" Type="int" />
+          <Property Name="team" Type="nchar" MaxLength="10" />
+          <Property Name="players" Type="nchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="stats_defense">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="id" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="tkl" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ast" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="sk" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="int" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ffum" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="stats_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="team" Type="nchar" MaxLength="10" />
+          <Property Name="totfd" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="totyds" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="pyds" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ryds" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="pen" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="penyds" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="trnovr" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="pt" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ptyds" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ptavg" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="top" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityContainer Name="ffstatsModel1StoreContainer">
+          <EntitySet Name="away_team" EntityType="Self.away_team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="drive" EntityType="Self.drive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="drive_play_player" EntityType="Self.drive_play_player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="home_team" EntityType="Self.home_team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="play" EntityType="Self.play" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Root" EntityType="Self.Root" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="scrsummary" EntityType="Self.scrsummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stats_defense" EntityType="Self.stats_defense" Schema="dbo" Table="stats.defense" store:Type="Tables" />
+          <EntitySet Name="stats_team" EntityType="Self.stats_team" Schema="dbo" Table="stats.team" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -31,6 +168,14 @@
       <Schema Namespace="ffstatsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Roots" EntityType="ffstatsModel1.Root" />
+          <EntitySet Name="drive_play_player" EntityType="ffstatsModel1.drive_play_player" />
+          <EntitySet Name="plays" EntityType="ffstatsModel1.play" />
+          <EntitySet Name="scrsummaries" EntityType="ffstatsModel1.scrsummary" />
+          <EntitySet Name="stats_defense" EntityType="ffstatsModel1.stats_defense" />
+          <EntitySet Name="stats_team" EntityType="ffstatsModel1.stats_team" />
+          <EntitySet Name="drives" EntityType="ffstatsModel1.drive" />
+          <EntitySet Name="away_team" EntityType="ffstatsModel1.away_team" />
+          <EntitySet Name="home_team" EntityType="ffstatsModel1.home_team" />
         </EntityContainer>
         <EntityType Name="Root">
           <Key>
@@ -48,6 +193,135 @@
           <Property Name="clock" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="stadium" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="drive_play_player">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="drivenum" Type="Int32" />
+          <Property Name="playnum" Type="Int32" />
+          <Property Name="playerid" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="sequence" Type="Int32" />
+          <Property Name="clubcode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="playerName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="statId" Type="Int32" />
+          <Property Name="yards" Type="Int32" />
+        </EntityType>
+        <EntityType Name="play">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="drive_num" Type="Int32" />
+          <Property Name="playnum" Type="Int32" />
+          <Property Name="sp" Type="Int32" />
+          <Property Name="qtr" Type="Int32" />
+          <Property Name="down" Type="Int32" />
+          <Property Name="time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yrdln" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ydstogo" Type="Int32" />
+          <Property Name="ydsnet" Type="Int32" />
+          <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="scrsummary">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="scr_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="qtr" Type="Int32" />
+          <Property Name="team" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="players" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="stats_defense">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tkl" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ast" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sk" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="int" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ffum" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="stats_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="team" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="totfd" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totyds" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pyds" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ryds" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pen" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="penyds" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="trnovr" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ptyds" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ptavg" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="top" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="drive">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="drivenumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="qtr" Type="Int32" />
+          <Property Name="redzone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fds" Type="Int32" />
+          <Property Name="result" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="penyds" Type="Int32" />
+          <Property Name="ydsgained" Type="Int32" />
+          <Property Name="numplays" Type="Int32" />
+          <Property Name="postime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="start_qtr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="start_time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="start_yrdln" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="start_team" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="end_qtr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="end_time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="end_yrdln" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="end_team" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="away_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="abbr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="team_to" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="players" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_5" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_t" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="home_team">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="abbr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="team_to" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="players" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_5" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="score_t" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -69,6 +343,143 @@
                 <ScalarProperty Name="yl" ColumnName="yl" />
                 <ScalarProperty Name="media" ColumnName="media" />
                 <ScalarProperty Name="weather" ColumnName="weather" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drive_play_player">
+            <EntityTypeMapping TypeName="ffstatsModel1.drive_play_player">
+              <MappingFragment StoreEntitySet="drive_play_player">
+                <ScalarProperty Name="yards" ColumnName="yards" />
+                <ScalarProperty Name="statId" ColumnName="statId" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+                <ScalarProperty Name="clubcode" ColumnName="clubcode" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="playnum" ColumnName="playnum" />
+                <ScalarProperty Name="drivenum" ColumnName="drivenum" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plays">
+            <EntityTypeMapping TypeName="ffstatsModel1.play">
+              <MappingFragment StoreEntitySet="play">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="posteam" ColumnName="posteam" />
+                <ScalarProperty Name="ydsnet" ColumnName="ydsnet" />
+                <ScalarProperty Name="ydstogo" ColumnName="ydstogo" />
+                <ScalarProperty Name="yrdln" ColumnName="yrdln" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="down" ColumnName="down" />
+                <ScalarProperty Name="qtr" ColumnName="qtr" />
+                <ScalarProperty Name="sp" ColumnName="sp" />
+                <ScalarProperty Name="playnum" ColumnName="playnum" />
+                <ScalarProperty Name="drive_num" ColumnName="drive_num" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scrsummaries">
+            <EntityTypeMapping TypeName="ffstatsModel1.scrsummary">
+              <MappingFragment StoreEntitySet="scrsummary">
+                <ScalarProperty Name="players" ColumnName="players" />
+                <ScalarProperty Name="team" ColumnName="team" />
+                <ScalarProperty Name="qtr" ColumnName="qtr" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="scr_id" ColumnName="scr_id" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stats_defense">
+            <EntityTypeMapping TypeName="ffstatsModel1.stats_defense">
+              <MappingFragment StoreEntitySet="stats_defense">
+                <ScalarProperty Name="ffum" ColumnName="ffum" />
+                <ScalarProperty Name="int" ColumnName="int" />
+                <ScalarProperty Name="sk" ColumnName="sk" />
+                <ScalarProperty Name="ast" ColumnName="ast" />
+                <ScalarProperty Name="tkl" ColumnName="tkl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stats_team">
+            <EntityTypeMapping TypeName="ffstatsModel1.stats_team">
+              <MappingFragment StoreEntitySet="stats_team">
+                <ScalarProperty Name="top" ColumnName="top" />
+                <ScalarProperty Name="ptavg" ColumnName="ptavg" />
+                <ScalarProperty Name="ptyds" ColumnName="ptyds" />
+                <ScalarProperty Name="pt" ColumnName="pt" />
+                <ScalarProperty Name="trnovr" ColumnName="trnovr" />
+                <ScalarProperty Name="penyds" ColumnName="penyds" />
+                <ScalarProperty Name="pen" ColumnName="pen" />
+                <ScalarProperty Name="ryds" ColumnName="ryds" />
+                <ScalarProperty Name="pyds" ColumnName="pyds" />
+                <ScalarProperty Name="totyds" ColumnName="totyds" />
+                <ScalarProperty Name="totfd" ColumnName="totfd" />
+                <ScalarProperty Name="team" ColumnName="team" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drives">
+            <EntityTypeMapping TypeName="ffstatsModel1.drive">
+              <MappingFragment StoreEntitySet="drive">
+                <ScalarProperty Name="end_team" ColumnName="end_team" />
+                <ScalarProperty Name="end_yrdln" ColumnName="end_yrdln" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="end_qtr" ColumnName="end_qtr" />
+                <ScalarProperty Name="start_team" ColumnName="start_team" />
+                <ScalarProperty Name="start_yrdln" ColumnName="start_yrdln" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="start_qtr" ColumnName="start_qtr" />
+                <ScalarProperty Name="postime" ColumnName="postime" />
+                <ScalarProperty Name="numplays" ColumnName="numplays" />
+                <ScalarProperty Name="ydsgained" ColumnName="ydsgained" />
+                <ScalarProperty Name="penyds" ColumnName="penyds" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="fds" ColumnName="fds" />
+                <ScalarProperty Name="redzone" ColumnName="redzone" />
+                <ScalarProperty Name="qtr" ColumnName="qtr" />
+                <ScalarProperty Name="posteam" ColumnName="posteam" />
+                <ScalarProperty Name="drivenumber" ColumnName="drivenumber" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="away_team">
+            <EntityTypeMapping TypeName="ffstatsModel1.away_team">
+              <MappingFragment StoreEntitySet="away_team">
+                <ScalarProperty Name="score_t" ColumnName="score_t" />
+                <ScalarProperty Name="score_5" ColumnName="score_5" />
+                <ScalarProperty Name="score_4" ColumnName="score_4" />
+                <ScalarProperty Name="score_3" ColumnName="score_3" />
+                <ScalarProperty Name="score_2" ColumnName="score_2" />
+                <ScalarProperty Name="score_1" ColumnName="score_1" />
+                <ScalarProperty Name="players" ColumnName="players" />
+                <ScalarProperty Name="team_to" ColumnName="team_to" />
+                <ScalarProperty Name="abbr" ColumnName="abbr" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="home_team">
+            <EntityTypeMapping TypeName="ffstatsModel1.home_team">
+              <MappingFragment StoreEntitySet="home_team">
+                <ScalarProperty Name="score_t" ColumnName="score_t" />
+                <ScalarProperty Name="score_5" ColumnName="score_5" />
+                <ScalarProperty Name="score_4" ColumnName="score_4" />
+                <ScalarProperty Name="score_3" ColumnName="score_3" />
+                <ScalarProperty Name="score_2" ColumnName="score_2" />
+                <ScalarProperty Name="score_1" ColumnName="score_1" />
+                <ScalarProperty Name="players" ColumnName="players" />
+                <ScalarProperty Name="team_to" ColumnName="team_to" />
+                <ScalarProperty Name="abbr" ColumnName="abbr" />
                 <ScalarProperty Name="eid" ColumnName="eid" />
               </MappingFragment>
             </EntityTypeMapping>

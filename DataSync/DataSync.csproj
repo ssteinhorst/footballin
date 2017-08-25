@@ -52,6 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="away_team.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="drive.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="drive_play_player.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameScheduleData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +95,9 @@
       <DependentUpon>GameScheduleData.tt</DependentUpon>
     </Compile>
     <Compile Include="game_schedule.services.cs" />
+    <Compile Include="home_team.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="JsonUtils.cs" />
     <Compile Include="Models\Away.cs" />
     <Compile Include="Models\Drive.cs" />
@@ -93,7 +105,6 @@
     <Compile Include="Models\Play.cs" />
     <Compile Include="Models\Players.cs" />
     <Compile Include="Models\MyRoot.cs" />
-    <Compile Include="Models\Score.cs" />
     <Compile Include="Models\ScrSummary.cs" />
     <Compile Include="Models\StartEnd.cs" />
     <Compile Include="Models\Stats.cs" />
@@ -107,8 +118,20 @@
     <Compile Include="Models\StatsRushing.cs" />
     <Compile Include="Models\StatsTeam.cs" />
     <Compile Include="NflDataRetriver.service.cs" />
+    <Compile Include="play.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Root.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="scrsummary.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stats_defense.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stats_team.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
   </ItemGroup>
