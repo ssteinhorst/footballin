@@ -125,6 +125,9 @@
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="punting_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="receiving_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
@@ -137,6 +140,7 @@
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
+    <Compile Include="Transformers\PuntingStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
     <Compile Include="Transformers\RushingStatsTransformer.cs" />
   </ItemGroup>

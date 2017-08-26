@@ -107,6 +107,20 @@
           <Property Name="twoptm" Type="nchar" MaxLength="10" />
           <Property Name="home_or_away" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="punting_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="playerid" Type="nchar" MaxLength="30" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="pts" Type="nchar" MaxLength="10" />
+          <Property Name="yds" Type="nchar" MaxLength="10" />
+          <Property Name="avg" Type="nchar" MaxLength="10" />
+          <Property Name="i20" Type="nchar" MaxLength="10" />
+          <Property Name="lng" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="receiving_stats">
           <Key>
             <PropertyRef Name="eid_playerid" />
@@ -163,6 +177,7 @@
           <EntitySet Name="home_team" EntityType="Self.home_team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="kicking_stats" EntityType="Self.kicking_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="passing_stats" EntityType="Self.passing_stats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="punting_stats" EntityType="Self.punting_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="receiving_stats" EntityType="Self.receiving_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Root" EntityType="Self.Root" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rushing_stats" EntityType="Self.rushing_stats" Schema="dbo" store:Type="Tables" />
@@ -181,6 +196,7 @@
           <EntitySet Name="receiving_stats" EntityType="ffstatsModel1.receiving_stats" />
           <EntitySet Name="fumbles_stats" EntityType="ffstatsModel1.fumbles_stats" />
           <EntitySet Name="kicking_stats" EntityType="ffstatsModel1.kicking_stats" />
+          <EntitySet Name="punting_stats" EntityType="ffstatsModel1.punting_stats" />
         </EntityContainer>
         <EntityType Name="Root">
           <Key>
@@ -331,6 +347,20 @@
           <Property Name="xpa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="xpb" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="xptot" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="punting_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="playerid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="pts" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="avg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="i20" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="lng" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
@@ -493,6 +523,21 @@
                 <ScalarProperty Name="fgyds" ColumnName="fgyds" />
                 <ScalarProperty Name="fga" ColumnName="fga" />
                 <ScalarProperty Name="fgm" ColumnName="fgm" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="punting_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.punting_stats">
+              <MappingFragment StoreEntitySet="punting_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="i20" ColumnName="i20" />
+                <ScalarProperty Name="avg" ColumnName="avg" />
+                <ScalarProperty Name="yds" ColumnName="yds" />
+                <ScalarProperty Name="pts" ColumnName="pts" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="playerid" ColumnName="playerid" />
                 <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
