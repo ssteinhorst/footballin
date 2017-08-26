@@ -35,5 +35,6 @@ namespace DataSync
         public virtual DbSet<fumbles_stats> fumbles_stats { get; set; }
         public virtual DbSet<kicking_stats> kicking_stats { get; set; }
         public virtual DbSet<punting_stats> punting_stats { get; set; }
+        public virtual DbSet<kickret_stats> kickret_stats { get; set; }
     }
 }

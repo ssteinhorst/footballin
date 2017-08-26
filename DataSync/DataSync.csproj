@@ -102,6 +102,9 @@
     <Compile Include="kicking_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="kickret_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Away.cs" />
     <Compile Include="Models\Drive.cs" />
     <Compile Include="Models\Home.cs" />
@@ -139,6 +142,7 @@
     </Compile>
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
+    <Compile Include="Transformers\KickretStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
     <Compile Include="Transformers\PuntingStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />

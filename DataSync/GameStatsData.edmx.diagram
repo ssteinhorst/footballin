@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="ffstatsModel1.fumbles_stats" Width="1.5" PointX="6.125" PointY="4.375" />
         <EntityTypeShape EntityType="ffstatsModel1.kicking_stats" Width="1.5" PointX="8" PointY="0.625" />
         <EntityTypeShape EntityType="ffstatsModel1.punting_stats" Width="1.5" PointX="0.875" PointY="9.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.kickret_stats" Width="1.5" PointX="2.625" PointY="9.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
