@@ -1,5 +1,6 @@
 ﻿using DataSync;
-using DataSync.Services;
+//using DataSync.Services;
+using DataSync.Transformers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -44,7 +45,6 @@ namespace Footballin.Controllers
             string eid = "2013090500";
             root.eid = eid;
 
-            var xformer = new PassingStatsTransformer();
             using (var db = new Entities())
             {
 
@@ -52,12 +52,21 @@ namespace Footballin.Controllers
                 db.Roots.Add(root);
                 db.home_team.Add(root.home_team);
                 db.away_team.Add(root.away_team);
-                foreach (passing_stats ps in xformer.TransformJSONPassingToEF(eid, root.home.stats.passing))
+                var passXformer = new PassingStatsTransformer();
+                foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "home", root.home.stats.passing))
                 {
                     db.passing_stats.Add(ps);
                 }
-
-
+                var rushXformer = new RushingStatsTransformer();
+                foreach(rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "home", root.home.stats.rushing))
+                {
+                    db.rushing_stats.Add(rs);
+                }
+                var recXformer = new ReceivingStatsTransformer();
+                foreach(receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "home", root.home.stats.receiving))
+                {
+                    db.receiving_stats.Add(rs);
+                }
                 db.SaveChanges();
 
 
@@ -83,10 +92,10 @@ namespace Footballin.Controllers
                 {
                     db.passing_stats.Remove(remove_passing);
                 }
-
-                //db.home_team.Remove(root.home_team);
-                //db.away_team.Remove(root.away_team);
-
+               
+                db.rushing_stats.RemoveRange(db.rushing_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+                db.receiving_stats.RemoveRange(db.receiving_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+                
                 db.SaveChanges();
             }
         }

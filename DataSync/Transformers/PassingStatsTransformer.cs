@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataSync.Services
+namespace DataSync.Transformers
 {
     public class PassingStatsTransformer
     {
-        public List<passing_stats> TransformJSONPassingToEF(string eid, Dictionary<string, StatsPassing> sPass)
+        public List<passing_stats> TransformJSONPassingToEF(string eid, string location, Dictionary<string, StatsPassing> sPass)
         {
             var ps = new List<passing_stats>();
             foreach(string passKey in sPass.Keys)
@@ -25,6 +25,7 @@ namespace DataSync.Services
                 pass.twopta = sPass[passKey].twopta;
                 pass.twoptm = sPass[passKey].twoptm;
                 pass.yds = sPass[passKey].yds;
+                pass.home_or_away = location;
                 ps.Add(pass);
             }
             return ps;

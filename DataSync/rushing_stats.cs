@@ -12,16 +12,16 @@ namespace DataSync
     using System;
     using System.Collections.Generic;
     
-    public partial class passing_stats
+    public partial class rushing_stats
     {
         public string eid_playerid { get; set; }
         public string playerid { get; set; }
         public string name { get; set; }
         public string att { get; set; }
-        public string cmp { get; set; }
         public string yds { get; set; }
         public string tds { get; set; }
-        public string ints { get; set; }
+        public string lng { get; set; }
+        public string lngtd { get; set; }
         public string twopta { get; set; }
         public string twoptm { get; set; }
         public string home_or_away { get; set; }

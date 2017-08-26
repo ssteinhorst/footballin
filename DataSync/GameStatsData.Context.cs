@@ -30,5 +30,7 @@ namespace DataSync
         public virtual DbSet<away_team> away_team { get; set; }
         public virtual DbSet<home_team> home_team { get; set; }
         public virtual DbSet<passing_stats> passing_stats { get; set; }
+        public virtual DbSet<rushing_stats> rushing_stats { get; set; }
+        public virtual DbSet<receiving_stats> receiving_stats { get; set; }
     }
 }
