@@ -72,7 +72,11 @@ namespace Footballin.Controllers
                 {
                     db.fumbles_stats.Add(fs);
                 }
-
+                var kickXformer = new KickingStatsTransformer();
+                foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "home", root.home.stats.kicking))
+                {
+                    db.kicking_stats.Add(ks);
+                }
                 db.SaveChanges();
 
 
@@ -102,6 +106,7 @@ namespace Footballin.Controllers
                 db.rushing_stats.RemoveRange(db.rushing_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.receiving_stats.RemoveRange(db.receiving_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.fumbles_stats.RemoveRange(db.fumbles_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+                db.kicking_stats.RemoveRange(db.kicking_stats.Where(e => e.eid_playerid.StartsWith(eid)));
 
                 db.SaveChanges();
             }

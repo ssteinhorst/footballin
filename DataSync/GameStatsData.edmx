@@ -73,6 +73,24 @@
           <Property Name="score_5" Type="nchar" MaxLength="10" />
           <Property Name="score_t" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="kicking_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="playerid" Type="nchar" MaxLength="30" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="fgm" Type="nchar" MaxLength="10" />
+          <Property Name="fga" Type="nchar" MaxLength="10" />
+          <Property Name="fgyds" Type="nchar" MaxLength="10" />
+          <Property Name="totpfg" Type="nchar" MaxLength="10" />
+          <Property Name="xpmade" Type="nchar" MaxLength="10" />
+          <Property Name="xpmissed" Type="nchar" MaxLength="10" />
+          <Property Name="xpa" Type="nchar" MaxLength="10" />
+          <Property Name="xpb" Type="nchar" MaxLength="10" />
+          <Property Name="xptot" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="passing_stats">
           <Key>
             <PropertyRef Name="eid_playerid" />
@@ -143,6 +161,7 @@
           <EntitySet Name="drive" EntityType="Self.drive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fumbles_stats" EntityType="Self.fumbles_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="home_team" EntityType="Self.home_team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kicking_stats" EntityType="Self.kicking_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="passing_stats" EntityType="Self.passing_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="receiving_stats" EntityType="Self.receiving_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Root" EntityType="Self.Root" Schema="dbo" store:Type="Tables" />
@@ -161,6 +180,7 @@
           <EntitySet Name="rushing_stats" EntityType="ffstatsModel1.rushing_stats" />
           <EntitySet Name="receiving_stats" EntityType="ffstatsModel1.receiving_stats" />
           <EntitySet Name="fumbles_stats" EntityType="ffstatsModel1.fumbles_stats" />
+          <EntitySet Name="kicking_stats" EntityType="ffstatsModel1.kicking_stats" />
         </EntityContainer>
         <EntityType Name="Root">
           <Key>
@@ -293,6 +313,24 @@
           <Property Name="trcv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="yds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="lost" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="kicking_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="playerid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="fgm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fga" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fgyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="totpfg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="xpmade" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="xpmissed" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="xpa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="xpb" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="xptot" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
@@ -436,6 +474,25 @@
                 <ScalarProperty Name="trcv" ColumnName="trcv" />
                 <ScalarProperty Name="rcv" ColumnName="rcv" />
                 <ScalarProperty Name="tot" ColumnName="tot" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kicking_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.kicking_stats">
+              <MappingFragment StoreEntitySet="kicking_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="xptot" ColumnName="xptot" />
+                <ScalarProperty Name="xpb" ColumnName="xpb" />
+                <ScalarProperty Name="xpa" ColumnName="xpa" />
+                <ScalarProperty Name="xpmissed" ColumnName="xpmissed" />
+                <ScalarProperty Name="xpmade" ColumnName="xpmade" />
+                <ScalarProperty Name="totpfg" ColumnName="totpfg" />
+                <ScalarProperty Name="fgyds" ColumnName="fgyds" />
+                <ScalarProperty Name="fga" ColumnName="fga" />
+                <ScalarProperty Name="fgm" ColumnName="fgm" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="playerid" ColumnName="playerid" />
                 <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />

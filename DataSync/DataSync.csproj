@@ -99,6 +99,9 @@
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
     <Compile Include="JsonUtils.cs" />
+    <Compile Include="kicking_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Away.cs" />
     <Compile Include="Models\Drive.cs" />
     <Compile Include="Models\Home.cs" />
@@ -132,6 +135,7 @@
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
+    <Compile Include="Transformers\KickingStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
     <Compile Include="Transformers\RushingStatsTransformer.cs" />
