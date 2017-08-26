@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataSync.Services
 {
-    public class JsonToEFModelTransformer
+    public class PassingStatsTransformer
     {
-        public List<passing_stats> TransformPassingToEF(string eid, Dictionary<string, StatsPassing> sPass)
+        public List<passing_stats> TransformJSONPassingToEF(string eid, Dictionary<string, StatsPassing> sPass)
         {
             var ps = new List<passing_stats>();
             foreach(string passKey in sPass.Keys)

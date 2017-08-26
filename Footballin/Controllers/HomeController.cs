@@ -44,19 +44,20 @@ namespace Footballin.Controllers
             string eid = "2013090500";
             root.eid = eid;
 
-            var xformer = new JsonToEFModelTransformer();
+            var xformer = new PassingStatsTransformer();
             using (var db = new Entities())
             {
 
                 // add new entries
                 db.Roots.Add(root);
-                //db.team_details.Select(e => e.eid != null);
                 db.home_team.Add(root.home_team);
                 db.away_team.Add(root.away_team);
-                foreach (passing_stats ps in xformer.TransformPassingToEF(eid, root.home.stats.passing))
+                foreach (passing_stats ps in xformer.TransformJSONPassingToEF(eid, root.home.stats.passing))
                 {
                     db.passing_stats.Add(ps);
                 }
+
+
                 db.SaveChanges();
 
 

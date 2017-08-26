@@ -122,7 +122,7 @@
     <Compile Include="Root.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="Services\JsonToEFModelTransformer.cs" />
+    <Compile Include="Transformers\PassingStatsTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="GameScheduleData.edmx">
