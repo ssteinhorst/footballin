@@ -32,5 +32,6 @@ namespace DataSync
         public virtual DbSet<passing_stats> passing_stats { get; set; }
         public virtual DbSet<rushing_stats> rushing_stats { get; set; }
         public virtual DbSet<receiving_stats> receiving_stats { get; set; }
+        public virtual DbSet<fumbles_stats> fumbles_stats { get; set; }
     }
 }

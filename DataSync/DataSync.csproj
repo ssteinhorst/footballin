@@ -58,6 +58,9 @@
     <Compile Include="drive.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="fumbles_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameScheduleData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,6 +131,7 @@
     <Compile Include="rushing_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Transformers\FumblesStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
     <Compile Include="Transformers\RushingStatsTransformer.cs" />

@@ -67,6 +67,12 @@ namespace Footballin.Controllers
                 {
                     db.receiving_stats.Add(rs);
                 }
+                var fumXformer = new FumblesStatsTransformer();
+                foreach(fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "home", root.home.stats.fumbles))
+                {
+                    db.fumbles_stats.Add(fs);
+                }
+
                 db.SaveChanges();
 
 
@@ -87,15 +93,16 @@ namespace Footballin.Controllers
                     db.away_team.Remove(remove_away);
                 }
 
-                var remove_passing = db.passing_stats.SingleOrDefault(e => e.eid_playerid.StartsWith(eid));
-                if(remove_passing != null)
-                {
-                    db.passing_stats.Remove(remove_passing);
-                }
-               
+                //var remove_passing = db.passing_stats.SingleOrDefault(e => e.eid_playerid.StartsWith(eid));
+                //if(remove_passing != null)
+                //{
+                //    db.passing_stats.Remove(remove_passing);
+                //}
+                db.passing_stats.RemoveRange(db.passing_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.rushing_stats.RemoveRange(db.rushing_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.receiving_stats.RemoveRange(db.receiving_stats.Where(e => e.eid_playerid.StartsWith(eid)));
-                
+                db.fumbles_stats.RemoveRange(db.fumbles_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+
                 db.SaveChanges();
             }
         }

@@ -44,6 +44,20 @@
           <Property Name="end_yrdln" Type="nchar" MaxLength="10" />
           <Property Name="end_team" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="fumbles_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="playerid" Type="nchar" MaxLength="30" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="tot" Type="nchar" MaxLength="10" />
+          <Property Name="rcv" Type="nchar" MaxLength="10" />
+          <Property Name="trcv" Type="nchar" MaxLength="10" />
+          <Property Name="yds" Type="nchar" MaxLength="10" />
+          <Property Name="lost" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="home_team">
           <Key>
             <PropertyRef Name="eid" />
@@ -127,6 +141,7 @@
         <EntityContainer Name="ffstatsModel1StoreContainer">
           <EntitySet Name="away_team" EntityType="Self.away_team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drive" EntityType="Self.drive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fumbles_stats" EntityType="Self.fumbles_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="home_team" EntityType="Self.home_team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="passing_stats" EntityType="Self.passing_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="receiving_stats" EntityType="Self.receiving_stats" Schema="dbo" store:Type="Tables" />
@@ -145,6 +160,7 @@
           <EntitySet Name="passing_stats" EntityType="ffstatsModel1.passing_stats" />
           <EntitySet Name="rushing_stats" EntityType="ffstatsModel1.rushing_stats" />
           <EntitySet Name="receiving_stats" EntityType="ffstatsModel1.receiving_stats" />
+          <EntitySet Name="fumbles_stats" EntityType="ffstatsModel1.fumbles_stats" />
         </EntityContainer>
         <EntityType Name="Root">
           <Key>
@@ -263,6 +279,20 @@
           <Property Name="lngtd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="twopta" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="twoptm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="fumbles_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="playerid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="tot" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="rcv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="trcv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="lost" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
@@ -391,6 +421,21 @@
                 <ScalarProperty Name="tds" ColumnName="tds" />
                 <ScalarProperty Name="yds" ColumnName="yds" />
                 <ScalarProperty Name="rec" ColumnName="rec" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fumbles_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.fumbles_stats">
+              <MappingFragment StoreEntitySet="fumbles_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="lost" ColumnName="lost" />
+                <ScalarProperty Name="yds" ColumnName="yds" />
+                <ScalarProperty Name="trcv" ColumnName="trcv" />
+                <ScalarProperty Name="rcv" ColumnName="rcv" />
+                <ScalarProperty Name="tot" ColumnName="tot" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="playerid" ColumnName="playerid" />
                 <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
