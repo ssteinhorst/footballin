@@ -16,6 +16,8 @@ namespace DataSync
         public Dictionary<string, StatsKicking> kicking { get; set; }
         public Dictionary<string, StatsPunting> punting { get; set; }
         public Dictionary<string, StatsKickret> kickret { get; set; }
-
+        public Dictionary<string, StatsPuntret> puntret { get; set; }
+        public Dictionary<string, StatsDefense> defense { get; set; }
+        public StatsTeam team { get; set; }
     }
 }

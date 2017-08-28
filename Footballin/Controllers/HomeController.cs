@@ -87,6 +87,18 @@ namespace Footballin.Controllers
                 {
                     db.kickret_stats.Add(ks);
                 }
+                var puntretXformer = new PuntretStatsTransformer();
+                foreach(puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "home", root.home.stats.puntret))
+                {
+                    db.puntret_stats.Add(ps);
+                }
+                var defenseXformer = new DefenseStatsTransformer();
+                foreach(defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "home", root.home.stats.defense))
+                {
+                    db.defense_stats.Add(ds);
+                }
+                var teamXformer = new TeamStatsTransformer();
+                db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team));
                 db.SaveChanges();
 
 
@@ -119,7 +131,10 @@ namespace Footballin.Controllers
                 db.kicking_stats.RemoveRange(db.kicking_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.punting_stats.RemoveRange(db.punting_stats.Where(e => e.eid_playerid.StartsWith(eid)));
                 db.kickret_stats.RemoveRange(db.kickret_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+                db.puntret_stats.RemoveRange(db.puntret_stats.Where(e => e.eid_playerid.StartsWith(eid)));
 
+                db.defense_stats.RemoveRange(db.defense_stats.Where(e => e.eid_playerid.StartsWith(eid)));
+                db.team_stats.RemoveRange(db.team_stats.Where(e => e.eid == eid));
                 db.SaveChanges();
             }
         }

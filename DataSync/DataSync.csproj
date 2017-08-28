@@ -55,6 +55,9 @@
     <Compile Include="away_team.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="defense_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="drive.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
@@ -114,6 +117,7 @@
     <Compile Include="Models\ScrSummary.cs" />
     <Compile Include="Models\StartEnd.cs" />
     <Compile Include="Models\Stats.cs" />
+    <Compile Include="Models\StatsDefense.cs" />
     <Compile Include="Models\StatsFumbles.cs" />
     <Compile Include="Models\StatsKicking.cs" />
     <Compile Include="Models\StatsKickret.cs" />
@@ -131,6 +135,9 @@
     <Compile Include="punting_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="puntret_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="receiving_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
@@ -140,13 +147,19 @@
     <Compile Include="rushing_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="team_stats.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transformers\DefenseStatsTransformer.cs" />
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
     <Compile Include="Transformers\KickretStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
     <Compile Include="Transformers\PuntingStatsTransformer.cs" />
+    <Compile Include="Transformers\PuntretStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
     <Compile Include="Transformers\RushingStatsTransformer.cs" />
+    <Compile Include="Transformers\TeamStatsTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="GameScheduleData.edmx">

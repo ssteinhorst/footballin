@@ -20,6 +20,20 @@
           <Property Name="score_5" Type="nchar" MaxLength="10" />
           <Property Name="score_t" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="defense_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="playerid" Type="nchar" MaxLength="30" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="tkl" Type="nchar" MaxLength="10" />
+          <Property Name="ast" Type="nchar" MaxLength="10" />
+          <Property Name="sk" Type="nchar" MaxLength="10" />
+          <Property Name="int" Type="nchar" MaxLength="10" />
+          <Property Name="ffum" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="drive">
           <Key>
             <PropertyRef Name="eid" />
@@ -135,6 +149,20 @@
           <Property Name="lng" Type="nchar" MaxLength="10" />
           <Property Name="home_or_away" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="puntret_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="playerid" Type="nchar" MaxLength="30" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="ret" Type="nchar" MaxLength="10" />
+          <Property Name="avg" Type="nchar" MaxLength="10" />
+          <Property Name="tds" Type="nchar" MaxLength="10" />
+          <Property Name="lng" Type="nchar" MaxLength="10" />
+          <Property Name="lngtd" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="receiving_stats">
           <Key>
             <PropertyRef Name="eid_playerid" />
@@ -184,8 +212,28 @@
           <Property Name="twoptm" Type="nchar" MaxLength="10" />
           <Property Name="home_or_away" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="team_stats">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="team_abbr" Type="nchar" MaxLength="10" />
+          <Property Name="totfd" Type="nchar" MaxLength="10" />
+          <Property Name="totyds" Type="nchar" MaxLength="10" />
+          <Property Name="pyds" Type="nchar" MaxLength="10" />
+          <Property Name="ryds" Type="nchar" MaxLength="10" />
+          <Property Name="pen" Type="nchar" MaxLength="10" />
+          <Property Name="penyds" Type="nchar" MaxLength="10" />
+          <Property Name="trnovr" Type="nchar" MaxLength="10" />
+          <Property Name="pt" Type="nchar" MaxLength="10" />
+          <Property Name="ptyds" Type="nchar" MaxLength="10" />
+          <Property Name="ptavg" Type="nchar" MaxLength="10" />
+          <Property Name="top" Type="nchar" MaxLength="10" />
+          <Property Name="home_or_away" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityContainer Name="ffstatsModel1StoreContainer">
           <EntitySet Name="away_team" EntityType="Self.away_team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="defense_stats" EntityType="Self.defense_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drive" EntityType="Self.drive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fumbles_stats" EntityType="Self.fumbles_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="home_team" EntityType="Self.home_team" Schema="dbo" store:Type="Tables" />
@@ -193,9 +241,11 @@
           <EntitySet Name="kickret_stats" EntityType="Self.kickret_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="passing_stats" EntityType="Self.passing_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="punting_stats" EntityType="Self.punting_stats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="puntret_stats" EntityType="Self.puntret_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="receiving_stats" EntityType="Self.receiving_stats" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Root" EntityType="Self.Root" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rushing_stats" EntityType="Self.rushing_stats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="team_stats" EntityType="Self.team_stats" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -213,6 +263,9 @@
           <EntitySet Name="kicking_stats" EntityType="ffstatsModel1.kicking_stats" />
           <EntitySet Name="punting_stats" EntityType="ffstatsModel1.punting_stats" />
           <EntitySet Name="kickret_stats" EntityType="ffstatsModel1.kickret_stats" />
+          <EntitySet Name="puntret_stats" EntityType="ffstatsModel1.puntret_stats" />
+          <EntitySet Name="defense_stats" EntityType="ffstatsModel1.defense_stats" />
+          <EntitySet Name="team_stats" EntityType="ffstatsModel1.team_stats" />
         </EntityContainer>
         <EntityType Name="Root">
           <Key>
@@ -391,6 +444,53 @@
           <Property Name="tds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="lng" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="lngtd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="puntret_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="playerid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="ret" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="avg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="lng" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="lngtd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="defense_stats">
+          <Key>
+            <PropertyRef Name="eid_playerid" />
+          </Key>
+          <Property Name="eid_playerid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="playerid" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="tkl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ast" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="sk" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="int" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ffum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="team_stats">
+          <Key>
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="team_abbr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="totfd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="totyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ryds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="penyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="trnovr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ptyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ptavg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="top" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
@@ -586,6 +686,56 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="playerid" ColumnName="playerid" />
                 <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puntret_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.puntret_stats">
+              <MappingFragment StoreEntitySet="puntret_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="lngtd" ColumnName="lngtd" />
+                <ScalarProperty Name="lng" ColumnName="lng" />
+                <ScalarProperty Name="tds" ColumnName="tds" />
+                <ScalarProperty Name="avg" ColumnName="avg" />
+                <ScalarProperty Name="ret" ColumnName="ret" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="defense_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.defense_stats">
+              <MappingFragment StoreEntitySet="defense_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="ffum" ColumnName="ffum" />
+                <ScalarProperty Name="int" ColumnName="int" />
+                <ScalarProperty Name="sk" ColumnName="sk" />
+                <ScalarProperty Name="ast" ColumnName="ast" />
+                <ScalarProperty Name="tkl" ColumnName="tkl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerid" ColumnName="playerid" />
+                <ScalarProperty Name="eid_playerid" ColumnName="eid_playerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="team_stats">
+            <EntityTypeMapping TypeName="ffstatsModel1.team_stats">
+              <MappingFragment StoreEntitySet="team_stats">
+                <ScalarProperty Name="home_or_away" ColumnName="home_or_away" />
+                <ScalarProperty Name="top" ColumnName="top" />
+                <ScalarProperty Name="ptavg" ColumnName="ptavg" />
+                <ScalarProperty Name="ptyds" ColumnName="ptyds" />
+                <ScalarProperty Name="pt" ColumnName="pt" />
+                <ScalarProperty Name="trnovr" ColumnName="trnovr" />
+                <ScalarProperty Name="penyds" ColumnName="penyds" />
+                <ScalarProperty Name="pen" ColumnName="pen" />
+                <ScalarProperty Name="ryds" ColumnName="ryds" />
+                <ScalarProperty Name="pyds" ColumnName="pyds" />
+                <ScalarProperty Name="totyds" ColumnName="totyds" />
+                <ScalarProperty Name="totfd" ColumnName="totfd" />
+                <ScalarProperty Name="team_abbr" ColumnName="team_abbr" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

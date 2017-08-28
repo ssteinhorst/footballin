@@ -16,6 +16,9 @@
         <EntityTypeShape EntityType="ffstatsModel1.kicking_stats" Width="1.5" PointX="8" PointY="0.625" />
         <EntityTypeShape EntityType="ffstatsModel1.punting_stats" Width="1.5" PointX="0.875" PointY="9.375" />
         <EntityTypeShape EntityType="ffstatsModel1.kickret_stats" Width="1.5" PointX="2.625" PointY="9.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.puntret_stats" Width="1.5" PointX="4.375" PointY="9.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.defense_stats" Width="1.5" PointX="8.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ffstatsModel1.team_stats" Width="1.5" PointX="6.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
