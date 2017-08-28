@@ -214,9 +214,9 @@
         </EntityType>
         <EntityType Name="team_stats">
           <Key>
-            <PropertyRef Name="eid" />
+            <PropertyRef Name="eid_location" />
           </Key>
-          <Property Name="eid" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="eid_location" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="team_abbr" Type="nchar" MaxLength="10" />
           <Property Name="totfd" Type="nchar" MaxLength="10" />
           <Property Name="totyds" Type="nchar" MaxLength="10" />
@@ -252,7 +252,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="ffstatsModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Roots" EntityType="ffstatsModel1.Root" />
           <EntitySet Name="drives" EntityType="ffstatsModel1.drive" />
           <EntitySet Name="away_team" EntityType="ffstatsModel1.away_team" />
           <EntitySet Name="home_team" EntityType="ffstatsModel1.home_team" />
@@ -265,25 +264,9 @@
           <EntitySet Name="kickret_stats" EntityType="ffstatsModel1.kickret_stats" />
           <EntitySet Name="puntret_stats" EntityType="ffstatsModel1.puntret_stats" />
           <EntitySet Name="defense_stats" EntityType="ffstatsModel1.defense_stats" />
+          <EntitySet Name="Roots" EntityType="ffstatsModel1.Root" />
           <EntitySet Name="team_stats" EntityType="ffstatsModel1.team_stats" />
         </EntityContainer>
-        <EntityType Name="Root">
-          <Key>
-            <PropertyRef Name="eid" />
-          </Key>
-          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="weather" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="media" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="yl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="qtr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="down" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="togo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="redzone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="clock" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="stadium" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
         <EntityType Name="drive">
           <Key>
             <PropertyRef Name="eid" />
@@ -474,11 +457,28 @@
           <Property Name="ffum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="home_or_away" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="team_stats">
+        <EntityType Name="Root">
           <Key>
             <PropertyRef Name="eid" />
           </Key>
-          <Property Name="eid" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="eid" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="weather" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="media" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="yl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="qtr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="down" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="togo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="redzone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="clock" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="posteam" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="stadium" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="team_stats">
+          <Key>
+            <PropertyRef Name="eid_location" />
+          </Key>
+          <Property Name="eid_location" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="team_abbr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="totfd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="totyds" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
@@ -499,24 +499,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ffstatsModel1StoreContainer" CdmEntityContainer="Entities">
-        <EntitySetMapping Name="Roots">
-            <EntityTypeMapping TypeName="ffstatsModel1.Root">
-              <MappingFragment StoreEntitySet="Root">
-                <ScalarProperty Name="stadium" ColumnName="stadium" />
-                <ScalarProperty Name="posteam" ColumnName="posteam" />
-                <ScalarProperty Name="clock" ColumnName="clock" />
-                <ScalarProperty Name="redzone" ColumnName="redzone" />
-                <ScalarProperty Name="togo" ColumnName="togo" />
-                <ScalarProperty Name="down" ColumnName="down" />
-                <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="qtr" ColumnName="qtr" />
-                <ScalarProperty Name="yl" ColumnName="yl" />
-                <ScalarProperty Name="media" ColumnName="media" />
-                <ScalarProperty Name="weather" ColumnName="weather" />
-                <ScalarProperty Name="eid" ColumnName="eid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="drives">
             <EntityTypeMapping TypeName="ffstatsModel1.drive">
               <MappingFragment StoreEntitySet="drive">
@@ -719,6 +701,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roots">
+            <EntityTypeMapping TypeName="ffstatsModel1.Root">
+              <MappingFragment StoreEntitySet="Root">
+                <ScalarProperty Name="stadium" ColumnName="stadium" />
+                <ScalarProperty Name="posteam" ColumnName="posteam" />
+                <ScalarProperty Name="clock" ColumnName="clock" />
+                <ScalarProperty Name="redzone" ColumnName="redzone" />
+                <ScalarProperty Name="togo" ColumnName="togo" />
+                <ScalarProperty Name="down" ColumnName="down" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="qtr" ColumnName="qtr" />
+                <ScalarProperty Name="yl" ColumnName="yl" />
+                <ScalarProperty Name="media" ColumnName="media" />
+                <ScalarProperty Name="weather" ColumnName="weather" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="team_stats">
             <EntityTypeMapping TypeName="ffstatsModel1.team_stats">
               <MappingFragment StoreEntitySet="team_stats">
@@ -735,7 +735,7 @@
                 <ScalarProperty Name="totyds" ColumnName="totyds" />
                 <ScalarProperty Name="totfd" ColumnName="totfd" />
                 <ScalarProperty Name="team_abbr" ColumnName="team_abbr" />
-                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="eid_location" ColumnName="eid_location" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

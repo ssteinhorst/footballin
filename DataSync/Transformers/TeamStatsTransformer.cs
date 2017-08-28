@@ -12,7 +12,7 @@ namespace DataSync.Transformers
         {
             var teamstats = new team_stats()
             {
-                eid = eid,
+                eid_location = eid + "-" + location,
                 home_or_away = location,
                 totfd = ts.totfd,
                 totyds = ts.totyds,

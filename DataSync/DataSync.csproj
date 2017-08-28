@@ -150,8 +150,10 @@
     <Compile Include="team_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Transformers\AwayStatsTransformer.cs" />
     <Compile Include="Transformers\DefenseStatsTransformer.cs" />
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
+    <Compile Include="Transformers\HomeStatsTransformer.cs" />
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
     <Compile Include="Transformers\KickretStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />

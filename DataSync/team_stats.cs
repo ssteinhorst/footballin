@@ -14,7 +14,7 @@ namespace DataSync
     
     public partial class team_stats
     {
-        public string eid { get; set; }
+        public string eid_location { get; set; }
         public string team_abbr { get; set; }
         public string totfd { get; set; }
         public string totyds { get; set; }

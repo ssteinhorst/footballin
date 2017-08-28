@@ -50,10 +50,18 @@ namespace Footballin.Controllers
 
                 // add new entries
                 db.Roots.Add(root);
-                db.home_team.Add(root.home_team);
-                db.away_team.Add(root.away_team);
+                var homeXformer = new HomeStatsTransformer();
+                db.home_team.Add(homeXformer.TransformJSONHometoEF(eid, "home", root.home));
+
+                var awayXformer = new AwayStatsTransformer();
+                db.away_team.Add(awayXformer.TransformJSONAwayToEF(eid, "away", root.away));
+
                 var passXformer = new PassingStatsTransformer();
                 foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "home", root.home.stats.passing))
+                {
+                    db.passing_stats.Add(ps);
+                }
+                foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "away", root.away.stats.passing))
                 {
                     db.passing_stats.Add(ps);
                 }
@@ -62,8 +70,16 @@ namespace Footballin.Controllers
                 {
                     db.rushing_stats.Add(rs);
                 }
+                foreach (rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "away", root.away.stats.rushing))
+                {
+                    db.rushing_stats.Add(rs);
+                }
                 var recXformer = new ReceivingStatsTransformer();
                 foreach(receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "home", root.home.stats.receiving))
+                {
+                    db.receiving_stats.Add(rs);
+                }
+                foreach (receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "away", root.away.stats.receiving))
                 {
                     db.receiving_stats.Add(rs);
                 }
@@ -72,8 +88,16 @@ namespace Footballin.Controllers
                 {
                     db.fumbles_stats.Add(fs);
                 }
+                foreach (fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "away", root.away.stats.fumbles))
+                {
+                    db.fumbles_stats.Add(fs);
+                }
                 var kickXformer = new KickingStatsTransformer();
                 foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "home", root.home.stats.kicking))
+                {
+                    db.kicking_stats.Add(ks);
+                }
+                foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "away", root.away.stats.kicking))
                 {
                     db.kicking_stats.Add(ks);
                 }
@@ -82,8 +106,16 @@ namespace Footballin.Controllers
                 {
                     db.punting_stats.Add(ps);
                 }
+                foreach (punting_stats ps in puntXformer.TransformJSONPuntingToEF(eid, "away", root.away.stats.punting))
+                {
+                    db.punting_stats.Add(ps);
+                }
                 var kickretXformer = new KickretStatsTransformer();
                 foreach(kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "home", root.home.stats.kickret))
+                {
+                    db.kickret_stats.Add(ks);
+                }
+                foreach (kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "away", root.away.stats.kickret))
                 {
                     db.kickret_stats.Add(ks);
                 }
@@ -92,13 +124,28 @@ namespace Footballin.Controllers
                 {
                     db.puntret_stats.Add(ps);
                 }
+                foreach (puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "away", root.away.stats.puntret))
+                {
+                    db.puntret_stats.Add(ps);
+                }
                 var defenseXformer = new DefenseStatsTransformer();
                 foreach(defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "home", root.home.stats.defense))
                 {
                     db.defense_stats.Add(ds);
                 }
+                foreach (defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "away", root.away.stats.defense))
+                {
+                    db.defense_stats.Add(ds);
+                }
                 var teamXformer = new TeamStatsTransformer();
-                db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team));
+                team_stats h = teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team);
+                team_stats a = teamXformer.TransformJSONTeamStatsToEF(eid, "away", root.away.abbr, root.away.stats.team);
+                db.team_stats.Add(h);
+                db.team_stats.Add(a);
+
+                //db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team));
+                //db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "away", root.away.abbr, root.away.stats.team));
+
                 db.SaveChanges();
 
 
@@ -134,7 +181,7 @@ namespace Footballin.Controllers
                 db.puntret_stats.RemoveRange(db.puntret_stats.Where(e => e.eid_playerid.StartsWith(eid)));
 
                 db.defense_stats.RemoveRange(db.defense_stats.Where(e => e.eid_playerid.StartsWith(eid)));
-                db.team_stats.RemoveRange(db.team_stats.Where(e => e.eid == eid));
+                db.team_stats.RemoveRange(db.team_stats.Where(e => e.eid_location.StartsWith(eid)));
                 db.SaveChanges();
             }
         }
