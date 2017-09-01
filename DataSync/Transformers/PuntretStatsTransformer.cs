@@ -11,21 +11,24 @@ namespace DataSync.Transformers
         public List<puntret_stats> TransformJSONPuntretToEF(string eid, string location, Dictionary<string, StatsPuntret> puntrets)
         {
             var puntretList = new List<puntret_stats>();
-            foreach(string puntretkey in puntrets.Keys)
+            if (puntrets != null)
             {
-                var puntret = new puntret_stats()
+                foreach (string puntretkey in puntrets.Keys)
                 {
-                    eid_playerid = eid + "-" + puntretkey,
-                    playerid = puntretkey,
-                    home_or_away = location,
-                    name = puntrets[puntretkey].name,
-                    ret = puntrets[puntretkey].ret,
-                    avg = puntrets[puntretkey].avg,
-                    tds = puntrets[puntretkey].tds,
-                    lng = puntrets[puntretkey].lng,
-                    lngtd = puntrets[puntretkey].lngtd
-                };
-                puntretList.Add(puntret);
+                    var puntret = new puntret_stats()
+                    {
+                        eid_playerid = eid + "-" + puntretkey,
+                        playerid = puntretkey,
+                        home_or_away = location,
+                        name = puntrets[puntretkey].name,
+                        ret = puntrets[puntretkey].ret,
+                        avg = puntrets[puntretkey].avg,
+                        tds = puntrets[puntretkey].tds,
+                        lng = puntrets[puntretkey].lng,
+                        lngtd = puntrets[puntretkey].lngtd
+                    };
+                    puntretList.Add(puntret);
+                }
             }
             return puntretList;
         }

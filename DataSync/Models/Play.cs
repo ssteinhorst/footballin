@@ -18,5 +18,6 @@ namespace DataSync
         public string posteam { get; set; }
         public string desc { get; set; }
         public string note { get; set; }
+        public Dictionary<string, List<Player>> players { get; set; }
     }
 }

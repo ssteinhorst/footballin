@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataSync
 {
-    public class Players
-    {
-        public Dictionary<string, List<Player>> players { get; set; }
-    }
+    //public class Players
+    //{
+    //    public Dictionary<string, List<Player>> players { get; set; }
+    //}
 
     public class Player
     {

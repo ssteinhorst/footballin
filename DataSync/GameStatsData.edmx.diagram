@@ -5,20 +5,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="87b10572f571485da5204fc0d24c552c" Name="Diagram1">
-        <EntityTypeShape EntityType="ffstatsModel1.drive" Width="1.5" PointX="0.875" PointY="4.375" />
         <EntityTypeShape EntityType="ffstatsModel1.away_team" Width="1.5" PointX="4.375" PointY="0.625" />
         <EntityTypeShape EntityType="ffstatsModel1.home_team" Width="1.5" PointX="2.625" PointY="0.625" />
-        <EntityTypeShape EntityType="ffstatsModel1.passing_stats" Width="1.5" PointX="2.625" PointY="4.375" />
-        <EntityTypeShape EntityType="ffstatsModel1.rushing_stats" Width="1.5" PointX="4.375" PointY="4.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.passing_stats" Width="1.5" PointX="0.875" PointY="4.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.rushing_stats" Width="1.5" PointX="2.625" PointY="4.375" />
         <EntityTypeShape EntityType="ffstatsModel1.receiving_stats" Width="1.5" PointX="6.125" PointY="0.625" />
-        <EntityTypeShape EntityType="ffstatsModel1.fumbles_stats" Width="1.5" PointX="6.125" PointY="4.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.fumbles_stats" Width="1.5" PointX="4.375" PointY="4.375" />
         <EntityTypeShape EntityType="ffstatsModel1.kicking_stats" Width="1.5" PointX="8" PointY="0.625" />
         <EntityTypeShape EntityType="ffstatsModel1.punting_stats" Width="1.5" PointX="0.875" PointY="9.375" />
         <EntityTypeShape EntityType="ffstatsModel1.kickret_stats" Width="1.5" PointX="2.625" PointY="9.375" />
         <EntityTypeShape EntityType="ffstatsModel1.puntret_stats" Width="1.5" PointX="4.375" PointY="9.375" />
-        <EntityTypeShape EntityType="ffstatsModel1.defense_stats" Width="1.5" PointX="8.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ffstatsModel1.defense_stats" Width="1.5" PointX="6.125" PointY="4.375" />
         <EntityTypeShape EntityType="ffstatsModel1.Root" Width="1.5" PointX="0.875" PointY="0.5" />
-        <EntityTypeShape EntityType="ffstatsModel1.team_stats" Width="1.5" PointX="6.125" PointY="9.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.team_stats" Width="1.5" PointX="7.875" PointY="4.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.drive_plays" Width="1.5" PointX="2.625" PointY="12.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.drive_play_players" Width="2.625" PointX="4.375" PointY="12.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.scrsummary_data" Width="1.5" PointX="6.125" PointY="9.375" />
+        <EntityTypeShape EntityType="ffstatsModel1.data_drives" Width="1.5" PointX="8.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

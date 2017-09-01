@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace DataSync
 {
-    public class NflDataRetriver
+    public class GameScheduleRetriver
     {
         public static void AddSheduleDataFromURL(int year, string seasonType, int week)
         {
@@ -89,12 +89,29 @@ namespace DataSync
                         {
                             seasonType = "POST";
                         }
-                        NflDataRetriver.AddSheduleDataFromURL(year, seasonType, week);
+                        GameScheduleRetriver.AddSheduleDataFromURL(year, seasonType, week);
                     }
                 }
             }
             //dataService.AddSheduleDataFromURL(2015, "REG", 1);
 
+        }
+
+        public List<int> GetScheduleEIDsForYear(string year)
+        {
+            int.TryParse(year, out int intYear);
+            using (var db = new ffstatsEntities())
+            {
+                return db.game_schedule.Where(e => e.season == intYear).Select(u => u.eid).ToList();
+            }
+        }
+
+        public List<string> GetAllScheduleEIDs()
+        {
+            using (var db = new ffstatsEntities())
+            {
+                return db.game_schedule.Select(u => u.eid.ToString()).ToList();
+            }
         }
     }
 }

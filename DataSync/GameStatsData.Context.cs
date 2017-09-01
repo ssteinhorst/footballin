@@ -25,7 +25,6 @@ namespace DataSync
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<drive> drives { get; set; }
         public virtual DbSet<away_team> away_team { get; set; }
         public virtual DbSet<home_team> home_team { get; set; }
         public virtual DbSet<passing_stats> passing_stats { get; set; }
@@ -39,5 +38,9 @@ namespace DataSync
         public virtual DbSet<defense_stats> defense_stats { get; set; }
         public virtual DbSet<Root> Roots { get; set; }
         public virtual DbSet<team_stats> team_stats { get; set; }
+        public virtual DbSet<drive_plays> drive_plays { get; set; }
+        public virtual DbSet<drive_play_players> drive_play_players { get; set; }
+        public virtual DbSet<scrsummary_data> scrsummary_data { get; set; }
+        public virtual DbSet<data_drives> data_drives { get; set; }
     }
 }

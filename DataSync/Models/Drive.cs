@@ -9,7 +9,7 @@ namespace DataSync
     public class Drive
     {
         public string posteam { get; set; }
-        public int qtr { get; set; }
+        public string qtr { get; set; }
         public string redzone { get; set; }
         public int fds { get; set; }
         public string result { get; set; }

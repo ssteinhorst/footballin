@@ -55,15 +55,22 @@
     <Compile Include="away_team.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="data_drives.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="defense_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
-    <Compile Include="drive.cs">
+    <Compile Include="drive_plays.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="drive_play_players.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
     <Compile Include="fumbles_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="GameDataService.cs" />
     <Compile Include="GameScheduleData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,7 +134,7 @@
     <Compile Include="Models\StatsReceiving.cs" />
     <Compile Include="Models\StatsRushing.cs" />
     <Compile Include="Models\StatsTeam.cs" />
-    <Compile Include="NflDataRetriver.service.cs" />
+    <Compile Include="GameScheduleRetriver.service.cs" />
     <Compile Include="passing_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
@@ -147,11 +154,17 @@
     <Compile Include="rushing_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="scrsummary_data.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="team_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
     <Compile Include="Transformers\AwayStatsTransformer.cs" />
     <Compile Include="Transformers\DefenseStatsTransformer.cs" />
+    <Compile Include="Transformers\DrivePlayPlayersTransformer.cs" />
+    <Compile Include="Transformers\DrivePlayTransformer.cs" />
+    <Compile Include="Transformers\DriveTransformer.cs" />
     <Compile Include="Transformers\FumblesStatsTransformer.cs" />
     <Compile Include="Transformers\HomeStatsTransformer.cs" />
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
@@ -161,6 +174,7 @@
     <Compile Include="Transformers\PuntretStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
     <Compile Include="Transformers\RushingStatsTransformer.cs" />
+    <Compile Include="Transformers\ScrsummaryTransformer.cs" />
     <Compile Include="Transformers\TeamStatsTransformer.cs" />
   </ItemGroup>
   <ItemGroup>

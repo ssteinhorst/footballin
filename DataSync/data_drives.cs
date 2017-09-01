@@ -12,12 +12,12 @@ namespace DataSync
     using System;
     using System.Collections.Generic;
     
-    public partial class drive
+    public partial class data_drives
     {
-        public string eid { get; set; }
+        public string eid_drivenumber { get; set; }
         public string drivenumber { get; set; }
         public string posteam { get; set; }
-        public Nullable<int> qtr { get; set; }
+        public string qtr { get; set; }
         public string redzone { get; set; }
         public Nullable<int> fds { get; set; }
         public string result { get; set; }
