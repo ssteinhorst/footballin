@@ -176,6 +176,8 @@
     <Compile Include="Transformers\RushingStatsTransformer.cs" />
     <Compile Include="Transformers\ScrsummaryTransformer.cs" />
     <Compile Include="Transformers\TeamStatsTransformer.cs" />
+    <Compile Include="WebRequester.cs" />
+    <Compile Include="WebRequesterInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="GameScheduleData.edmx">

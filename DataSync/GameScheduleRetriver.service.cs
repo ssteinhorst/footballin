@@ -17,55 +17,58 @@ namespace DataSync
             //  integer, `stype` should be one of the strings `PRE`, `REG` or
             //  `POST`, and `gsis_week` should be a value in the range
             //  `[0, 17]`.
-            var document = XDocument.Load("http://www.nfl.com/ajax/scorestrip?season=" + year + "&seasonType=" + seasonType + "&week=" + week);
-            //string week = document.Root.Element("gms").Value;
+            WebRequester webReq = new WebRequester();
+            //var document = XDocument.Load("http://www.nfl.com/ajax/scorestrip?season=" + year + "&seasonType=" + seasonType + "&week=" + week);
+            var document = webReq.GetSchedule(year, seasonType, week);
+
             List<game_schedule> games = new List<game_schedule>();
             if (document.Root.Element("gms") != null && document.Root.Element("gms").Elements("g") != null)
             {
                 foreach (XElement element in document.Root.Element("gms").Elements("g"))
                 {
-                    game_schedule gs = new game_schedule();
-                    gs.season = year;
-                    gs.seasontype = seasonType;
-                    gs.week = week;
-                    gs.day = element.Attribute("d").Value;
-                    gs.eid = (int)element.Attribute("eid");
-                    gs.ga = element.Attribute("ga").Value;
-                    gs.gametype = seasonType; //?? I think
-                    gs.gsis = element.Attribute("gsis").Value;
-                    gs.hometeamabbv = element.Attribute("h").Value;
-                    gs.hometeamname = element.Attribute("hnn").Value;
-                    gs.hs = element.Attribute("hs").Value;
-                    gs.k = element.Attribute("k").Value;
-                    gs.p = element.Attribute("p").Value;
-                    gs.q = element.Attribute("q").Value;
-                    gs.rz = element.Attribute("rz").Value;
-                    gs.time = element.Attribute("t").Value;
-                    gs.visitingteamabbv = element.Attribute("v").Value;
-                    gs.visitingteamname = element.Attribute("vnn").Value;
-                    gs.vs = element.Attribute("vs").Value;
-
+                    game_schedule gs = new game_schedule()
+                    {
+                        season = year,
+                        seasontype = seasonType,
+                        week = week,
+                        day = element.Attribute("d").Value,
+                        eid = (int)element.Attribute("eid"),
+                        ga = element.Attribute("ga").Value,
+                        gametype = seasonType, //?? I think
+                        gsis = element.Attribute("gsis").Value,
+                        hometeamabbv = element.Attribute("h").Value,
+                        hometeamname = element.Attribute("hnn").Value,
+                        hs = element.Attribute("hs").Value,
+                        k = element.Attribute("k").Value,
+                        p = element.Attribute("p").Value,
+                        q = element.Attribute("q").Value,
+                        rz = element.Attribute("rz").Value,
+                        time = element.Attribute("t").Value,
+                        visitingteamabbv = element.Attribute("v").Value,
+                        visitingteamname = element.Attribute("vnn").Value,
+                        vs = element.Attribute("vs").Value
+                    };
                     games.Add(gs);
                 }
                 game_schedule.AddMultipleGameSchedules(games);
             }
         }
 
-        public static void AddGameDataFromURL(string eid)
-        {
-            // gets the game data using passed in eid value from nfl.com
-            // url example: http://www.nfl.com/liveupdate/game-center/2013090500/2013090500_gtd.json
-            string url = "http://www.nfl.com/liveupdate/game-center/" + eid + "/" + eid + "_gtd.json";
-            using (WebClient wc = new WebClient())
-            {
-                var json = wc.DownloadString(url);
-                JObject o = JObject.Parse(json);
-            }
+        //public static void AddGameDataFromURL(string eid)
+        //{
+        //    // gets the game data using passed in eid value from nfl.com
+        //    // url example: http://www.nfl.com/liveupdate/game-center/2013090500/2013090500_gtd.json
+        //    string url = "http://www.nfl.com/liveupdate/game-center/" + eid + "/" + eid + "_gtd.json";
+        //    using (WebClient wc = new WebClient())
+        //    {
+        //        var json = wc.DownloadString(url);
+        //        JObject o = JObject.Parse(json);
+        //    }
 
-            JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\justroot.json");
-            Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
-            //justroot.eid = 2013090500;
-        }
+        //    JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\justroot.json");
+        //    Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
+        //    //justroot.eid = 2013090500;
+        //}
 
         public static void SyncScheduleDataFromUrl()
         {

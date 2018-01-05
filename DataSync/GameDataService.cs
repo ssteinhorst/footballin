@@ -22,12 +22,15 @@ namespace DataSync
                 {
                     //try
                     //{
-                        // sample of url
-                        //http://www.nfl.com/liveupdate/game-center/2012010101/2012010101_gtd.json
-                        //foreach (string eid in eids)
-                        //{
-                        // loads the JSON
-                        string json = GetJSONfromUrl(@"http://www.nfl.com/liveupdate/game-center/" + eid + @"/" + eid + @"_gtd.json");
+                    // sample of url
+                    //http://www.nfl.com/liveupdate/game-center/2012010101/2012010101_gtd.json
+                    //foreach (string eid in eids)
+                    //{
+                    // loads the JSON
+                    WebRequester webReq = new WebRequester();
+                    //string json = webReq.GetJSONfromUrl(@"http://www.nfl.com/liveupdate/game-center/" + eid + @"/" + eid + @"_gtd.json");
+                    string json = webReq.GetJSONfromUrl(eid);
+
                     if (json != null)
                     {
                         // create JObject
@@ -224,23 +227,23 @@ namespace DataSync
             }
         }
 
-        private string GetJSONfromUrl(string url)
-        {
-            string json = null;
-            try
-            {
+        //private string GetJSONfromUrl(string url)
+        //{
+        //    string json = null;
+        //    try
+        //    {
 
-                using (WebClient wc = new WebClient())
-                {
-                    json = wc.DownloadString(url);
-                }
-            }
-            catch(WebException ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return json;
-        }
+        //        using (WebClient wc = new WebClient())
+        //        {
+        //            json = wc.DownloadString(url);
+        //        }
+        //    }
+        //    catch(WebException ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //    return json;
+        //}
 
         public List<string> GetAllGameDataEIDs()
         {

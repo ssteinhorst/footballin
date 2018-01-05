@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Footballin", "Footballin\Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSync", "DataSync\DataSync.csproj", "{13DD1E4D-2475-4384-AB11-2D91C3BCBA26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ffstats_test", "ffstats_test\ffstats_test.csproj", "{DC52FA68-BE73-4821-A580-7DC8A843496B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{13DD1E4D-2475-4384-AB11-2D91C3BCBA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13DD1E4D-2475-4384-AB11-2D91C3BCBA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13DD1E4D-2475-4384-AB11-2D91C3BCBA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC52FA68-BE73-4821-A580-7DC8A843496B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC52FA68-BE73-4821-A580-7DC8A843496B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC52FA68-BE73-4821-A580-7DC8A843496B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC52FA68-BE73-4821-A580-7DC8A843496B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
