@@ -53,10 +53,12 @@
   <ItemGroup>
     <Compile Include="GameDataServiceTest.cs" />
     <Compile Include="TransformersTest.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="badjson.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="livegamedata.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

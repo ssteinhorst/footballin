@@ -10,10 +10,13 @@ namespace ffstats_test
 {
     class GameDataServiceTest
     {
+        
         [TestClass]
         public class UnitTest1
         {
             public GameDataService gameDataService = new GameDataService();
+
+            [Ignore]
             [TestMethod]
             public void TestGetAndSaveGameData()
             {

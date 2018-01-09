@@ -21,8 +21,8 @@ namespace DataSync.Transformers
                     desc = scrsummary[key].desc,
                     qtr = scrsummary[key].qtr,
                     team = scrsummary[key].team,
-                    players = scrsummary[key].players.ToString()
-                };
+                    players = string.Join(",", scrsummary[key].players.Select(x => x.Value).ToArray())
+            };
                 scrList.Add(scr);
             }
             return scrList;
