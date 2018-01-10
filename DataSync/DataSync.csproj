@@ -115,6 +115,9 @@
     <Compile Include="kickret_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>
+    <Compile Include="lu_player.cs">
+      <DependentUpon>GameStatsData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Away.cs" />
     <Compile Include="Models\Drive.cs" />
     <Compile Include="Models\Home.cs" />
@@ -170,6 +173,7 @@
     <Compile Include="Transformers\KickingStatsTransformer.cs" />
     <Compile Include="Transformers\KickretStatsTransformer.cs" />
     <Compile Include="Transformers\PassingStatsTransformer.cs" />
+    <Compile Include="Transformers\PlayerLUTransformer.cs" />
     <Compile Include="Transformers\PuntingStatsTransformer.cs" />
     <Compile Include="Transformers\PuntretStatsTransformer.cs" />
     <Compile Include="Transformers\ReceivingStatsTransformer.cs" />
@@ -215,6 +219,7 @@
       <DependentUpon>GameStatsData.edmx</DependentUpon>
       <LastGenOutput>GameStatsData.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="GameStatsData.edmx.sql" />
     <Content Include="GameStatsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GameStatsData.edmx</DependentUpon>

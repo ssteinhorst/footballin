@@ -184,7 +184,14 @@ namespace ffstats_test
 
             }
 
-
+            [TestMethod]
+            public void TestPlayerLUTransformer()
+            {
+                Root root = GetTestJSONObject();
+                var playerLU = new PlayerLUTransformer();
+                List<lu_player> lp = playerLU.PlayerListLUJSONtoEF(eid, root.scrsummary["522"].players);
+                Assert.IsTrue(lp[1].PlayerId == "00-0026158");
+            }
         }
     }
 }

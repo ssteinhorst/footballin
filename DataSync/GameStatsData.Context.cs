@@ -42,5 +42,6 @@ namespace DataSync
         public virtual DbSet<drive_play_players> drive_play_players { get; set; }
         public virtual DbSet<scrsummary_data> scrsummary_data { get; set; }
         public virtual DbSet<data_drives> data_drives { get; set; }
+        public virtual DbSet<lu_player> lu_player { get; set; }
     }
 }

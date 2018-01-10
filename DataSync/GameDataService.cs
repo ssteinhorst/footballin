@@ -57,134 +57,133 @@ namespace DataSync
 
         public bool SaveDeserializedJSONtoEF(Root root, string eid)
         {
-            //try
-            //{
-                using (var db = new Entities())
+
+            using (var db = new Entities())
+            {
+
+                // add new entries
+                db.Roots.Add(root);
+                var homeXformer = new HomeStatsTransformer();
+                db.home_team.Add(homeXformer.TransformJSONHometoEF(eid, "home", root.home));
+
+                var awayXformer = new AwayStatsTransformer();
+                db.away_team.Add(awayXformer.TransformJSONAwayToEF(eid, "away", root.away));
+
+                var passXformer = new PassingStatsTransformer();
+                foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "home", root.home.stats.passing))
                 {
+                    db.passing_stats.Add(ps);
+                }
+                foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "away", root.away.stats.passing))
+                {
+                    db.passing_stats.Add(ps);
+                }
+                var rushXformer = new RushingStatsTransformer();
+                foreach (rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "home", root.home.stats.rushing))
+                {
+                    db.rushing_stats.Add(rs);
+                }
+                foreach (rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "away", root.away.stats.rushing))
+                {
+                    db.rushing_stats.Add(rs);
+                }
+                var recXformer = new ReceivingStatsTransformer();
+                foreach (receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "home", root.home.stats.receiving))
+                {
+                    db.receiving_stats.Add(rs);
+                }
+                foreach (receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "away", root.away.stats.receiving))
+                {
+                    db.receiving_stats.Add(rs);
+                }
+                var fumXformer = new FumblesStatsTransformer();
+                foreach (fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "home", root.home.stats.fumbles))
+                {
+                    db.fumbles_stats.Add(fs);
+                }
+                foreach (fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "away", root.away.stats.fumbles))
+                {
+                    db.fumbles_stats.Add(fs);
+                }
+                var kickXformer = new KickingStatsTransformer();
+                foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "home", root.home.stats.kicking))
+                {
+                    db.kicking_stats.Add(ks);
+                }
+                foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "away", root.away.stats.kicking))
+                {
+                    db.kicking_stats.Add(ks);
+                }
+                var puntXformer = new PuntingStatsTransformer();
+                foreach (punting_stats ps in puntXformer.TransformJSONPuntingToEF(eid, "home", root.home.stats.punting))
+                {
+                    db.punting_stats.Add(ps);
+                }
+                foreach (punting_stats ps in puntXformer.TransformJSONPuntingToEF(eid, "away", root.away.stats.punting))
+                {
+                    db.punting_stats.Add(ps);
+                }
+                var kickretXformer = new KickretStatsTransformer();
+                foreach (kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "home", root.home.stats.kickret))
+                {
+                    db.kickret_stats.Add(ks);
+                }
+                foreach (kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "away", root.away.stats.kickret))
+                {
+                    db.kickret_stats.Add(ks);
+                }
+                var puntretXformer = new PuntretStatsTransformer();
+                foreach (puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "home", root.home.stats.puntret))
+                {
+                    db.puntret_stats.Add(ps);
+                }
+                foreach (puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "away", root.away.stats.puntret))
+                {
+                    db.puntret_stats.Add(ps);
+                }
+                var defenseXformer = new DefenseStatsTransformer();
+                foreach (defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "home", root.home.stats.defense))
+                {
+                    db.defense_stats.Add(ds);
+                }
+                foreach (defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "away", root.away.stats.defense))
+                {
+                    db.defense_stats.Add(ds);
+                }
+                var teamXformer = new TeamStatsTransformer();
+                db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team));
+                db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "away", root.away.abbr, root.away.stats.team));
 
-                    // add new entries
-                    db.Roots.Add(root);
-                    var homeXformer = new HomeStatsTransformer();
-                    db.home_team.Add(homeXformer.TransformJSONHometoEF(eid, "home", root.home));
+                var driveXformer = new DriveTransformer();
+                var playXformer = new DrivePlayTransformer();
+                var dppXformer = new DrivePlayPlayersTransformer();
 
-                    var awayXformer = new AwayStatsTransformer();
-                    db.away_team.Add(awayXformer.TransformJSONAwayToEF(eid, "away", root.away));
-
-                    var passXformer = new PassingStatsTransformer();
-                    foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "home", root.home.stats.passing))
+                foreach (data_drives dd in driveXformer.TransformJSONTeamStatsToEF(eid, root.drives))
+                {
+                    db.data_drives.Add(dd);
+                    foreach (drive_plays play in playXformer.TransformDrivePlaysJSONtoEF(eid, dd.drivenumber, root.drives[dd.drivenumber].plays))
                     {
-                        db.passing_stats.Add(ps);
-                    }
-                    foreach (passing_stats ps in passXformer.TransformJSONPassingToEF(eid, "away", root.away.stats.passing))
-                    {
-                        db.passing_stats.Add(ps);
-                    }
-                    var rushXformer = new RushingStatsTransformer();
-                    foreach (rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "home", root.home.stats.rushing))
-                    {
-                        db.rushing_stats.Add(rs);
-                    }
-                    foreach (rushing_stats rs in rushXformer.TransformJSONRushingToEF(eid, "away", root.away.stats.rushing))
-                    {
-                        db.rushing_stats.Add(rs);
-                    }
-                    var recXformer = new ReceivingStatsTransformer();
-                    foreach (receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "home", root.home.stats.receiving))
-                    {
-                        db.receiving_stats.Add(rs);
-                    }
-                    foreach (receiving_stats rs in recXformer.TransformJSONReceivingToEF(eid, "away", root.away.stats.receiving))
-                    {
-                        db.receiving_stats.Add(rs);
-                    }
-                    var fumXformer = new FumblesStatsTransformer();
-                    foreach (fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "home", root.home.stats.fumbles))
-                    {
-                        db.fumbles_stats.Add(fs);
-                    }
-                    foreach (fumbles_stats fs in fumXformer.TransformJSONFumblesToEF(eid, "away", root.away.stats.fumbles))
-                    {
-                        db.fumbles_stats.Add(fs);
-                    }
-                    var kickXformer = new KickingStatsTransformer();
-                    foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "home", root.home.stats.kicking))
-                    {
-                        db.kicking_stats.Add(ks);
-                    }
-                    foreach (kicking_stats ks in kickXformer.TransformJSONKickingToEF(eid, "away", root.away.stats.kicking))
-                    {
-                        db.kicking_stats.Add(ks);
-                    }
-                    var puntXformer = new PuntingStatsTransformer();
-                    foreach (punting_stats ps in puntXformer.TransformJSONPuntingToEF(eid, "home", root.home.stats.punting))
-                    {
-                        db.punting_stats.Add(ps);
-                    }
-                    foreach (punting_stats ps in puntXformer.TransformJSONPuntingToEF(eid, "away", root.away.stats.punting))
-                    {
-                        db.punting_stats.Add(ps);
-                    }
-                    var kickretXformer = new KickretStatsTransformer();
-                    foreach (kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "home", root.home.stats.kickret))
-                    {
-                        db.kickret_stats.Add(ks);
-                    }
-                    foreach (kickret_stats ks in kickretXformer.TransformJSONKickretToEF(eid, "away", root.away.stats.kickret))
-                    {
-                        db.kickret_stats.Add(ks);
-                    }
-                    var puntretXformer = new PuntretStatsTransformer();
-                    foreach (puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "home", root.home.stats.puntret))
-                    {
-                        db.puntret_stats.Add(ps);
-                    }
-                    foreach (puntret_stats ps in puntretXformer.TransformJSONPuntretToEF(eid, "away", root.away.stats.puntret))
-                    {
-                        db.puntret_stats.Add(ps);
-                    }
-                    var defenseXformer = new DefenseStatsTransformer();
-                    foreach (defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "home", root.home.stats.defense))
-                    {
-                        db.defense_stats.Add(ds);
-                    }
-                    foreach (defense_stats ds in defenseXformer.TransformJSONDefenseToEF(eid, "away", root.away.stats.defense))
-                    {
-                        db.defense_stats.Add(ds);
-                    }
-                    var teamXformer = new TeamStatsTransformer();
-                    db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "home", root.home.abbr, root.home.stats.team));
-                    db.team_stats.Add(teamXformer.TransformJSONTeamStatsToEF(eid, "away", root.away.abbr, root.away.stats.team));
-
-                    var driveXformer = new DriveTransformer();
-                    var playXformer = new DrivePlayTransformer();
-                    var dppXformer = new DrivePlayPlayersTransformer();
-
-                    foreach (data_drives dd in driveXformer.TransformJSONTeamStatsToEF(eid, root.drives))
-                    {
-                        db.data_drives.Add(dd);
-                        foreach (drive_plays play in playXformer.TransformDrivePlaysJSONtoEF(eid, dd.drivenumber, root.drives[dd.drivenumber].plays))
+                        db.drive_plays.Add(play);
+                        foreach (drive_play_players dpp in dppXformer.TransformPlayerJSONtoEF(eid, dd.drivenumber, play.playnum, root.drives[dd.drivenumber].plays[play.playnum].players))
                         {
-                            db.drive_plays.Add(play);
-                            foreach (drive_play_players dpp in dppXformer.TransformPlayerJSONtoEF(eid, dd.drivenumber, play.playnum, root.drives[dd.drivenumber].plays[play.playnum].players))
-                            {
-                                db.drive_play_players.Add(dpp);
-                            }
+                            db.drive_play_players.Add(dpp);
                         }
                     }
-                    var scrXformer = new ScrsummaryTransformer();
-                    foreach (scrsummary_data sd in scrXformer.ScrsummaryJSONtoEF(eid, root.scrsummary))
-                    {
-                        db.scrsummary_data.Add(sd);
-                    }
-
-                    db.SaveChanges();
                 }
-            //}
-            //catch(Exception ex)
-            //{
-            //    Console.WriteLine(ex);
-            //    return false;
-            //}
+                var scrXformer = new ScrsummaryTransformer();
+                foreach (scrsummary_data sd in scrXformer.ScrsummaryJSONtoEF(eid, root.scrsummary))
+                {
+                    db.scrsummary_data.Add(sd);
+                    var playerLU = new PlayerLUTransformer();
+                    foreach (lu_player lp in playerLU.PlayerListLUJSONtoEF(eid, root.scrsummary[sd.scr_id].players))
+                    {
+                        db.lu_player.Add(lp);
+                    }
+                }
+
+                db.SaveChanges();
+            }
+
             return true;
         }
 
