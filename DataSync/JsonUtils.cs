@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.IO;
 
 namespace DataSync
@@ -16,6 +10,7 @@ namespace DataSync
             JObject parsed = JObject.Parse(getJson(path));
             return parsed;
         }
+
         public static string getJson(string path)
         {
             string json = "";

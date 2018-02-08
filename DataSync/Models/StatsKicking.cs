@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataSync
+﻿namespace DataSync
 {
     public class StatsKicking
     {
@@ -19,6 +13,7 @@ namespace DataSync
         public string xpb { get; set; }
         public string xptot { get; set; }
     }
+
     //public class Kicking
     //{
     //    public Dictionary<string, StatsKicking> kicking { get; set; }

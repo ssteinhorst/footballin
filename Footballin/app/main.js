@@ -9,7 +9,5 @@
         var vm = this;
         vm.food = 'pizza';
         vm.determinateValue = 50;
-        
     }
-
 })();

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataSync
+﻿namespace DataSync
 {
     public class StatsTeam
     {
@@ -19,8 +13,8 @@ namespace DataSync
         public string ptyds { get; set; }
         public string ptavg { get; set; }
         public string top { get; set; }
-
     }
+
     //public class Team
     //{
     //    public StatsTeam team { get; set; }

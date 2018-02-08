@@ -1,10 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Xml.Linq;
 
 namespace DataSync
@@ -97,7 +92,6 @@ namespace DataSync
                 }
             }
             //dataService.AddSheduleDataFromURL(2015, "REG", 1);
-
         }
 
         public List<int> GetScheduleEIDsForYear(string year)

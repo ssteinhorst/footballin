@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataSync
+﻿namespace DataSync
 {
     public class StatsPuntret
     {
@@ -14,8 +8,8 @@ namespace DataSync
         public string tds { get; set; }
         public string lng { get; set; }
         public string lngtd { get; set; }
-
     }
+
     //public class Puntret
     //{
     //    public Dictionary<string, StatsPuntret> puntret { get; set; }

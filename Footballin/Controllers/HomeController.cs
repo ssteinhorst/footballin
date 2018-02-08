@@ -1,14 +1,8 @@
 ﻿using DataSync;
-//using DataSync.Services;
-using DataSync.Transformers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
+//using DataSync.Services;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Footballin.Controllers
 {
@@ -25,6 +19,7 @@ namespace Footballin.Controllers
 
             return View();
         }
+
         public void SaveGameData()
         {
             var gameDataService = new GameDataService();
@@ -51,7 +46,6 @@ namespace Footballin.Controllers
 
             //using (var db = new Entities())
             //{
-
             //    // add new entries
             //    db.Roots.Add(root);
             //    var homeXformer = new HomeStatsTransformer();
@@ -168,10 +162,9 @@ namespace Footballin.Controllers
             //    foreach(scrsummary_data sd in scrXformer.ScrsummaryJSONtoEF(eid, root.scrsummary))
             //    {
             //        db.scrsummary_data.Add(sd);
-            //    }   
+            //    }
 
             //    db.SaveChanges();
-
 
             //    // remove changes
             //    var root_remove = db.Roots.SingleOrDefault(e => e.eid == root.eid);
@@ -234,9 +227,8 @@ namespace Footballin.Controllers
                     }
                 }
             }
-            
-
         }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -247,7 +239,6 @@ namespace Footballin.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
 
             return View();
         }

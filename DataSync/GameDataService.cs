@@ -1,12 +1,8 @@
 ﻿using DataSync.Transformers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataSync
 {
@@ -15,7 +11,7 @@ namespace DataSync
         public bool GetAndSaveGameData(List<string> eids)
         {
             var gameDataEids = this.GetAllGameDataEIDs();
-            var dups = eids.Where(e => gameDataEids.Any(p => e == p)); 
+            var dups = eids.Where(e => gameDataEids.Any(p => e == p));
             foreach (string eid in eids)
             {
                 if (!dups.Contains(eid))
@@ -57,10 +53,8 @@ namespace DataSync
 
         public bool SaveDeserializedJSONtoEF(Root root, string eid)
         {
-
             using (var db = new Entities())
             {
-
                 // add new entries
                 db.Roots.Add(root);
                 var homeXformer = new HomeStatsTransformer();
@@ -231,7 +225,6 @@ namespace DataSync
         //    string json = null;
         //    try
         //    {
-
         //        using (WebClient wc = new WebClient())
         //        {
         //            json = wc.DownloadString(url);
@@ -251,6 +244,5 @@ namespace DataSync
                 return db.Roots.Select(u => u.eid).ToList();
             }
         }
-        
     }
 }

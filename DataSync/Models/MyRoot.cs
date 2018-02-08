@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DataSync
 {
@@ -25,10 +19,12 @@ namespace DataSync
         //public string stadium { get; set; }
         //[NotMapped]
         public Dictionary<string, ScrSummary> scrsummary { get; set; }
+
         //[NotMapped]
 
         // drives is for JSON, Drives is for EF
         public Dictionary<string, Drive> drives { get; set; }
+
         //[JsonIgnore]
         //[JsonProperty(Required = Required.Default)]
         //public List<drive> Drives
@@ -70,6 +66,7 @@ namespace DataSync
         // away and home for for JSON deserializing
         // home_team and away_team are for EF persistance
         public Away away { get; set; }
+
         public Home home { get; set; }
 
         //[JsonIgnore]
@@ -112,11 +109,9 @@ namespace DataSync
         //        return awy;
         //    }
         //}
-       
+
         //[JsonIgnore]
         //[JsonProperty(Required = Required.Default)]
         //public List<ScrSummary> scrSummary { get ; set; }
-
-
     }
 }

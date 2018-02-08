@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataSync
+﻿namespace DataSync
 {
     public class StatsReceiving
     {
@@ -16,8 +10,8 @@ namespace DataSync
         public string lngtd { get; set; }
         public string twopta { get; set; }
         public string twoptm { get; set; }
-
     }
+
     //public class Receiving
     //{
     //    public Dictionary<string, StatsReceiving> receiving { get; set; }

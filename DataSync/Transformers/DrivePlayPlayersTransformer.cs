@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DataSync.Transformers
 {
@@ -11,9 +7,9 @@ namespace DataSync.Transformers
         public List<drive_play_players> TransformPlayerJSONtoEF(string eid, string drivenum, string playnum, Dictionary<string, List<Player>> pl)
         {
             var playerList = new List<drive_play_players>();
-            foreach(string key in pl.Keys)
+            foreach (string key in pl.Keys)
             {
-                foreach(Player player in pl[key])
+                foreach (Player player in pl[key])
                 {
                     var p = new drive_play_players()
                     {

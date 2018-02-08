@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DataSync.Transformers
 {
@@ -11,7 +7,7 @@ namespace DataSync.Transformers
         public List<defense_stats> TransformJSONDefenseToEF(string eid, string location, Dictionary<string, StatsDefense> sDef)
         {
             var defenseList = new List<defense_stats>();
-            foreach(string defKey in sDef.Keys)
+            foreach (string defKey in sDef.Keys)
             {
                 var defense = new defense_stats()
                 {

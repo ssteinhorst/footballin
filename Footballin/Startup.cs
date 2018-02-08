@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Footballin.Startup))]
+
 namespace Footballin
 {
     public partial class Startup

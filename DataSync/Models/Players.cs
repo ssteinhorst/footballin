@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataSync
+﻿namespace DataSync
 {
     //public class Players
     //{
@@ -18,6 +12,5 @@ namespace DataSync
         public string playerName { get; set; }
         public string statId { get; set; }
         public string yards { get; set; }
-
     }
 }

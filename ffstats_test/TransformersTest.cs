@@ -3,19 +3,18 @@ using DataSync.Transformers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace ffstats_test
 {
-    class TransformersTest
+    internal class TransformersTest
     {
         [TestClass]
         public class UnitTest1
         {
             private string eid = "2013090500";
-            
+
             private Root GetTestJSONObject()
             {
                 //string json = File.ReadAllText(@"C:\Users\Scott\Documents\Visual Studio 2015\Projects\Footballin\ffstats_test\livegamedata.json");
@@ -37,7 +36,6 @@ namespace ffstats_test
                 JObject parsed = JObject.Parse(json);
                 // this assert should never be hit
                 Assert.IsNull("notnull");
-
             }
 
             [TestMethod]
@@ -46,7 +44,6 @@ namespace ffstats_test
                 string json = File.ReadAllText(@".\livegamedata.json");
                 JObject parsed = JObject.Parse(json);
                 Assert.IsNotNull(parsed);
-
             }
 
             [TestMethod]
@@ -181,7 +178,6 @@ namespace ffstats_test
                 Assert.IsTrue(sd[0].team == "BAL");
                 Assert.IsTrue(sd[0].scr_id == "522");
                 Assert.IsTrue(sd[0].players.Contains("00-0026158"));
-
             }
 
             [TestMethod]

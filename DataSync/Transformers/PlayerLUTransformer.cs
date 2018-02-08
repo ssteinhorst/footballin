@@ -1,9 +1,4 @@
-﻿using DataSync.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DataSync.Transformers
 {
@@ -12,7 +7,7 @@ namespace DataSync.Transformers
         public List<lu_player> PlayerListLUJSONtoEF(string eid, Dictionary<string, string> players)
         {
             var playerList = new List<lu_player>();
-            foreach(string key in players.Keys)
+            foreach (string key in players.Keys)
             {
                 var luplayers = new lu_player()
                 {
@@ -22,7 +17,6 @@ namespace DataSync.Transformers
                 playerList.Add(luplayers);
             }
             return playerList;
-
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
+﻿using System.Runtime.Serialization;
 
 namespace Footballin.Models
 {
@@ -15,6 +11,7 @@ namespace Footballin.Models
     {
         [DataMember(Name = "eid")]
         public string eid { get; set; }
+
         public string weather { get; set; }
         public string media { get; set; }
         public string yl { get; set; }
