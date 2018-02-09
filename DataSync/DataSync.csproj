@@ -137,7 +137,7 @@
     <Compile Include="Models\StatsReceiving.cs" />
     <Compile Include="Models\StatsRushing.cs" />
     <Compile Include="Models\StatsTeam.cs" />
-    <Compile Include="GameScheduleRetriver.service.cs" />
+    <Compile Include="GameScheduleService.cs" />
     <Compile Include="passing_stats.cs">
       <DependentUpon>GameStatsData.tt</DependentUpon>
     </Compile>

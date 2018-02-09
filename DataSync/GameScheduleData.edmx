@@ -55,7 +55,6 @@
           <Property Name="p" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="rz" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ga" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="gametype" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="season" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="seasontype" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="week" Type="Decimal" Precision="18" Scale="0" />
@@ -87,7 +86,6 @@
                 <ScalarProperty Name="p" ColumnName="p" />
                 <ScalarProperty Name="rz" ColumnName="rz" />
                 <ScalarProperty Name="ga" ColumnName="ga" />
-                <ScalarProperty Name="gametype" ColumnName="gametype" />
                 <ScalarProperty Name="season" ColumnName="season" />
                 <ScalarProperty Name="seasontype" ColumnName="seasontype" />
                 <ScalarProperty Name="week" ColumnName="week" />

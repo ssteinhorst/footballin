@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace DataSync
 {
-    public class GameScheduleRetriver
+    public class GameScheduleService
     {
         public static void AddSheduleDataFromURL(int year, string seasonType, int week)
         {
@@ -29,7 +29,6 @@ namespace DataSync
                         day = element.Attribute("d").Value,
                         eid = (int)element.Attribute("eid"),
                         ga = element.Attribute("ga").Value,
-                        gametype = seasonType, //?? I think
                         gsis = element.Attribute("gsis").Value,
                         hometeamabbv = element.Attribute("h").Value,
                         hometeamname = element.Attribute("hnn").Value,
@@ -49,26 +48,8 @@ namespace DataSync
             }
         }
 
-        //public static void AddGameDataFromURL(string eid)
-        //{
-        //    // gets the game data using passed in eid value from nfl.com
-        //    // url example: http://www.nfl.com/liveupdate/game-center/2013090500/2013090500_gtd.json
-        //    string url = "http://www.nfl.com/liveupdate/game-center/" + eid + "/" + eid + "_gtd.json";
-        //    using (WebClient wc = new WebClient())
-        //    {
-        //        var json = wc.DownloadString(url);
-        //        JObject o = JObject.Parse(json);
-        //    }
-
-        //    JObject rootobj = JsonUtils.getJObject(@"C:\Users\Scott\Desktop\justroot.json");
-        //    Root justroot = JsonConvert.DeserializeObject<Root>(rootobj["2013090500"].ToString());
-        //    //justroot.eid = 2013090500;
-        //}
-
         public static void SyncScheduleDataFromUrl()
         {
-            //var dataService = new NflDataRetriver();
-
             int[] years = { 2017, 2016, 2015, 2014, 2013 };
             //string[] seasonTypes = {"PRE", "REG", "POST"};
             string seasonType = "";
@@ -87,11 +68,10 @@ namespace DataSync
                         {
                             seasonType = "POST";
                         }
-                        GameScheduleRetriver.AddSheduleDataFromURL(year, seasonType, week);
+                        GameScheduleService.AddSheduleDataFromURL(year, seasonType, week);
                     }
                 }
             }
-            //dataService.AddSheduleDataFromURL(2015, "REG", 1);
         }
 
         public List<int> GetScheduleEIDsForYear(string year)

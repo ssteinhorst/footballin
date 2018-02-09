@@ -23,7 +23,7 @@ namespace Footballin.Controllers
         public void SaveGameData()
         {
             var gameDataService = new GameDataService();
-            var gameScheduleService = new GameScheduleRetriver();
+            var gameScheduleService = new GameScheduleService();
             var eidlist = gameScheduleService.GetAllScheduleEIDs();
             bool json = gameDataService.GetAndSaveGameData(eidlist);
             //string jsonPath = @"C:\Users\Scott\Desktop\formatted_gamedata.json";
@@ -223,7 +223,7 @@ namespace Footballin.Controllers
                         {
                             seasonType = "POST";
                         }
-                        DataSync.GameScheduleRetriver.AddSheduleDataFromURL(year, seasonType, week);
+                        DataSync.GameScheduleService.AddSheduleDataFromURL(year, seasonType, week);
                     }
                 }
             }

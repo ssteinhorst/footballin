@@ -29,7 +29,6 @@ namespace DataSync
         public string p { get; set; }
         public string rz { get; set; }
         public string ga { get; set; }
-        public string gametype { get; set; }
         public Nullable<decimal> season { get; set; }
         public string seasontype { get; set; }
         public Nullable<decimal> week { get; set; }

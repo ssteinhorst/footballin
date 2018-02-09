@@ -16,15 +16,11 @@ namespace DataSync
             {
                 if (!dups.Contains(eid))
                 {
-                    //try
-                    //{
                     // sample of url
                     //http://www.nfl.com/liveupdate/game-center/2012010101/2012010101_gtd.json
-                    //foreach (string eid in eids)
-                    //{
+
                     // loads the JSON
                     WebRequester webReq = new WebRequester();
-                    //string json = webReq.GetJSONfromUrl(@"http://www.nfl.com/liveupdate/game-center/" + eid + @"/" + eid + @"_gtd.json");
                     string json = webReq.GetJSONfromUrl(eid);
 
                     if (json != null)
@@ -38,13 +34,6 @@ namespace DataSync
                         Root root = JsonConvert.DeserializeObject<Root>(parsed[eid].ToString());
                         root.eid = eid.ToString();
                         SaveDeserializedJSONtoEF(root, eid);
-                        //}
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    Console.WriteLine(ex);
-                        //    return false;
-                        //}
                     }
                 }
             }
@@ -219,23 +208,6 @@ namespace DataSync
                 db.SaveChanges();
             }
         }
-
-        //private string GetJSONfromUrl(string url)
-        //{
-        //    string json = null;
-        //    try
-        //    {
-        //        using (WebClient wc = new WebClient())
-        //        {
-        //            json = wc.DownloadString(url);
-        //        }
-        //    }
-        //    catch(WebException ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //    return json;
-        //}
 
         public List<string> GetAllGameDataEIDs()
         {
